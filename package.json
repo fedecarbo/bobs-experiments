@@ -8,7 +8,8 @@
     "watch:css": "sass src/scss/main.scss:public/stylesheets/main.css --load-path=node_modules --watch --quiet-deps"
   },
   "dependencies": {
-    "govuk-frontend": "^5.7.1"
+    "govuk-frontend": "^5.7.1",
+    "heroicons": "^2.2.0"
   },
   "devDependencies": {
     "sass": "^1.80.0"
