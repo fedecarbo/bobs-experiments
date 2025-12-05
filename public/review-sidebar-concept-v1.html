@@ -27,7 +27,7 @@
 
       /* Sidebar progress bar */
       .sidebar-progress {
-        padding: 15px;
+        padding: 20px;
         border-bottom: 1px solid #8eb8dc;
       }
       .sidebar-progress__label {
@@ -37,16 +37,21 @@
       }
       .sidebar-progress__bar {
         height: 8px;
-        background-color: #dee0e2;
+        background-color: #bbd4ea;
         border-radius: 4px;
         overflow: hidden;
+        display: flex;
       }
       .sidebar-progress__fill {
         height: 100%;
-        background-color: #1d70b8;
         width: 0%;
         transition: width 0.3s ease;
-        border-radius: 4px;
+      }
+      .sidebar-progress__fill--agreed {
+        background-color: #1d70b8;
+      }
+      .sidebar-progress__fill--returned {
+        background-color: #f47738;
       }
 
       /* Task list */
@@ -56,38 +61,25 @@
       }
       .task-list__heading {
         margin: 0;
-        padding: 16px 15px 8px 15px;
+        padding: 20px 20px 10px 20px;
         color: #0b0c0c;
       }
       .task-list__items {
         list-style: none;
         margin: 0;
-        padding: 0 15px 15px 15px;
+        padding: 0 20px 15px 20px;
       }
       .task-list__item {
         margin: 0;
+        padding: 12px 0 8px 0;
         border-bottom: 1px solid #8eb8dc;
       }
       .task-list__item:last-child {
         border-bottom: none;
       }
       .task-list__link {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        padding: 10px 5px;
-        text-decoration: none;
-        color: #1d70b8;
-        font-family: "GDS Transport", arial, sans-serif;
-        font-size: 1rem;
-        line-height: 1.25;
-      }
-      .task-list__link:hover {
-        color: #003078;
-      }
-      .task-list__link:focus {
-        outline: 3px solid #ffdd00;
-        outline-offset: 0;
-        background-color: #ffdd00;
       }
       .task-list__status {
         flex-shrink: 0;
@@ -113,12 +105,12 @@
       }
 
       /* Main content */
-      .main-content-wrapper {
-        max-width: 1100px;
-        margin: 0 auto;
+      .main-content {
+        scroll-behavior: smooth;
       }
-      .main-content-wrapper > * {
-        max-width: 75%;
+      .main-content-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
       }
       @media (max-width: 1024px) {
         .main-content-wrapper > * {
@@ -234,6 +226,7 @@
       .app-review-comments--saved .govuk-textarea {
         background-color: #f3f2f1;
         color: #505a5f;
+        border-color: #b1b4b6;
       }
       .app-review-comments--saved .app-review-comments__actions .app-save-comment {
         display: none;
@@ -275,7 +268,8 @@
             <span class="govuk-body-s govuk-!-margin-bottom-0"><strong id="progress-count">0</strong> of <strong>14</strong></span>
           </div>
           <div class="sidebar-progress__bar">
-            <div class="sidebar-progress__fill" id="progress-fill"></div>
+            <div class="sidebar-progress__fill sidebar-progress__fill--agreed" id="progress-fill-agreed"></div>
+            <div class="sidebar-progress__fill sidebar-progress__fill--returned" id="progress-fill-returned"></div>
           </div>
         </div>
         <!-- Tasklist -->
@@ -283,7 +277,7 @@
           <h2 class="govuk-heading-s task-list__heading">Pre-application report</h2>
           <ul class="task-list__items">
             <li class="task-list__item task-list__item--not-reviewed" data-section="pre-application-outcome">
-              <a href="#pre-application-outcome" class="task-list__link">
+              <a href="#pre-application-outcome" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -293,7 +287,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="officer-contact-details">
-              <a href="#officer-contact-details" class="task-list__link">
+              <a href="#officer-contact-details" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -303,7 +297,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="your-pre-application-details">
-              <a href="#your-pre-application-details" class="task-list__link">
+              <a href="#your-pre-application-details" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -313,7 +307,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="description-of-your-proposal">
-              <a href="#description-of-your-proposal" class="task-list__link">
+              <a href="#description-of-your-proposal" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -323,7 +317,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="site-map">
-              <a href="#site-map" class="task-list__link">
+              <a href="#site-map" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -333,7 +327,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="site-constraints">
-              <a href="#site-constraints" class="task-list__link">
+              <a href="#site-constraints" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -343,7 +337,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="site-history">
-              <a href="#site-history" class="task-list__link">
+              <a href="#site-history" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -353,7 +347,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="site-and-surroundings">
-              <a href="#site-and-surroundings" class="task-list__link">
+              <a href="#site-and-surroundings" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -363,7 +357,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="planning-considerations-and-advice">
-              <a href="#planning-considerations-and-advice" class="task-list__link">
+              <a href="#planning-considerations-and-advice" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -373,7 +367,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="summary-of-advice">
-              <a href="#summary-of-advice" class="task-list__link">
+              <a href="#summary-of-advice" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -383,7 +377,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="relevant-policies-and-guidance">
-              <a href="#relevant-policies-and-guidance" class="task-list__link">
+              <a href="#relevant-policies-and-guidance" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -393,7 +387,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="requirements">
-              <a href="#requirements" class="task-list__link">
+              <a href="#requirements" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -403,7 +397,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="next-steps">
-              <a href="#next-steps" class="task-list__link">
+              <a href="#next-steps" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -413,7 +407,7 @@
               </a>
             </li>
             <li class="task-list__item task-list__item--not-reviewed" data-section="disclaimer">
-              <a href="#disclaimer" class="task-list__link">
+              <a href="#disclaimer" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
                   <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
                     <circle cx="12" cy="12" r="11"/>
@@ -594,6 +588,9 @@
             <strong class="govuk-tag govuk-tag--grey app-review-tag" data-section-tag="site-map">Not reviewed</strong>
           </div>
           <div id="site-map-container" class="app-map-container"></div>
+          <div class="govuk-inset-text">
+            <strong>Note:</strong> Make sure your red line boundary includes all land necessary to carry out the proposed development, including access from a public highway, visibility splays, landscaping, car parking and any land required for drainage or other infrastructure.
+          </div>
           <div class="app-review-controls" data-section="site-map">
             <div class="app-review-buttons" role="group" aria-label="Review options for Site map">
               <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
@@ -1171,7 +1168,8 @@
       (function() {
         const reviewControls = document.querySelectorAll('.app-review-controls');
         const totalSections = reviewControls.length;
-        const progressFill = document.getElementById('progress-fill');
+        const progressFillAgreed = document.getElementById('progress-fill-agreed');
+        const progressFillReturned = document.getElementById('progress-fill-returned');
         const progressCount = document.getElementById('progress-count');
         const progressBar = document.querySelector('.sidebar-progress');
 
@@ -1181,10 +1179,15 @@
         const returnedIcon = '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#f47738"/><path stroke-linecap="round" stroke-linejoin="round" stroke="#ffffff" stroke-width="2" fill="none" d="M13 16 8 12m0 0 5-4M8 12h9"/></svg>';
 
         function updateProgress() {
-          const reviewedCount = document.querySelectorAll('.app-review-controls[data-status]').length;
-          const percentage = (reviewedCount / totalSections) * 100;
+          const agreedCount = document.querySelectorAll('.app-review-controls[data-status="agreed"]').length;
+          const returnedCount = document.querySelectorAll('.app-review-controls[data-status="returned"]').length;
+          const reviewedCount = agreedCount + returnedCount;
 
-          progressFill.style.width = percentage + '%';
+          const agreedPercentage = (agreedCount / totalSections) * 100;
+          const returnedPercentage = (returnedCount / totalSections) * 100;
+
+          progressFillAgreed.style.width = agreedPercentage + '%';
+          progressFillReturned.style.width = returnedPercentage + '%';
           progressCount.textContent = reviewedCount;
           progressBar.setAttribute('aria-valuenow', reviewedCount);
         }
@@ -1213,7 +1216,7 @@
           } else if (action === 'return') {
             control.dataset.status = 'returned';
             // Update section tag
-            statusEl.className = 'govuk-tag govuk-tag--yellow app-review-tag';
+            statusEl.className = 'govuk-tag govuk-tag--orange app-review-tag';
             statusEl.textContent = 'Returned for comments';
             // Update sidebar item
             sidebarItem.className = 'task-list__item task-list__item--returned';
