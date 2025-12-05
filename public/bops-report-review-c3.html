@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Pre-application report - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
+    <style>
+      .govuk-width-container {
+        max-width: 1100px;
+      }
+
+      .govuk-main-wrapper {
+        max-width: 75%;
+      }
+
+      .app-contents-list li {
+        padding-bottom: 7.5px;
+      }
+      .app-details-list p {
+        margin-bottom: 5px;
+      }
+      .app-placeholder-box {
+        background-color: #f3f2f1;
+        height: 300px;
+        margin-top: 30px;
+      }
+
+      .app-map-container {
+        height: 400px;
+        margin-top: 30px;
+        border: 2px solid #0b0c0c;
+      }
+
+      .app-section-content {
+        margin-top: 30px;
+      }
+
+      /* Review controls */
+      .app-review-controls {
+        margin-top: 30px;
+      }
+
+      .app-section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .app-section-header .govuk-heading-l {
+        margin-bottom: 0;
+      }
+
+      .app-review-tag {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        width: auto !important;
+        max-width: none;
+      }
+
+      .app-review-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        align-items: center;
+      }
+
+      .app-review-button {
+        font-family: "GDS Transport", arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.25;
+        padding: 8px 15px;
+        border: 2px solid #1d70b8;
+        background-color: #ffffff;
+        color: #1d70b8;
+        cursor: pointer;
+        margin: 0;
+        position: relative;
+      }
+
+      .app-review-button:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+
+      .app-review-button:nth-child(2) {
+        border-radius: 0 4px 4px 0;
+      }
+
+      .app-review-button:not(:first-child):not(.app-review-button--link) {
+        margin-left: -2px;
+      }
+
+      .app-review-link {
+        margin-left: 15px;
+      }
+
+
+      .app-review-button:hover {
+        background-color: #f3f2f1;
+      }
+
+      .app-review-button:focus {
+        outline: 3px solid #ffdd00;
+        outline-offset: 0;
+        z-index: 1;
+      }
+
+      .app-review-button[aria-pressed="true"] {
+        background-color: #1d70b8;
+        color: #ffffff;
+        z-index: 1;
+      }
+
+      .app-review-button[aria-pressed="true"]:hover {
+        background-color: #003078;
+      }
+
+      .app-review-comments {
+        margin-top: 15px;
+      }
+
+      .app-review-comments[hidden] {
+        display: none;
+      }
+
+      .app-review-comments .govuk-textarea {
+        margin-bottom: 10px;
+      }
+
+      .app-review-comments__actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .app-review-comments__saved-state {
+        display: none;
+        margin-bottom: 0;
+      }
+
+      .app-review-comments__saved-state.visible {
+        display: block;
+      }
+
+      .app-review-comments--saved .govuk-textarea {
+        background-color: #f3f2f1;
+        color: #505a5f;
+      }
+
+      .app-review-comments--saved .app-review-comments__actions .app-save-comment {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <header class="govuk-header" data-module="govuk-header">
+      <div class="govuk-header__container govuk-width-container">
+        <div class="govuk-header__logo">
+          <a href="/" class="govuk-header__link govuk-header__link--homepage">
+            <span class="govuk-header__logotype">
+              <span class="govuk-header__logotype-text">
+                GOV.UK
+              </span>
+            </span>
+          </a>
+        </div>
+        <div class="govuk-header__content">
+          <a href="/" class="govuk-header__link govuk-header__service-name">
+            BOPS Experiments
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="govuk-width-container">
+      <a href="/" class="govuk-back-link">Back</a>
+      <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="experiment-info-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="experiment-info-title">
+              Experiment brief
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-body">This is a prototype of the <strong>pre-application report preview</strong> that a manager in the UK planning back office system (BOPS) will review before it is sent to the applicant.</p>
+            <p class="govuk-body govuk-!-margin-bottom-0">The report provides guidance on a planning proposal, helping applicants understand what to expect when submitting their formal application.</p>
+          </div>
+        </div>
+
+        <h1 class="govuk-heading-xl">Pre-application report</h1>
+
+        <p class="govuk-body-l">
+          This report gives clear guidance on your proposal, helping you understand what to expect when submitting your formal planning application.
+        </p>
+
+        <div class="app-details-list govuk-!-margin-bottom-6">
+          <p class="govuk-body-s"><strong>2 Desendans Road, Green Village, BU2 3RH</strong></p>
+          <p class="govuk-body-s">Pre-application number: <strong>23-00527-PRE</strong></p>
+          <p class="govuk-body-s">Case officer: <strong>John Smith</strong></p>
+          <p class="govuk-body-s">Date of report: <strong>[DD/MM/YYYY]</strong></p>
+        </div>
+
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Contents</p>
+        <ul class="govuk-list govuk-body-s govuk-!-margin-bottom-6 app-contents-list">
+          <li>— <a href="#pre-application-outcome" class="govuk-link">Pre-application outcome</a></li>
+          <li>— <a href="#officer-contact-details" class="govuk-link">Officer contact details</a></li>
+          <li>— <a href="#your-pre-application-details" class="govuk-link">Your pre-application details</a></li>
+          <li>— <a href="#description-of-your-proposal" class="govuk-link">Description of your proposal</a></li>
+          <li>— <a href="#site-map" class="govuk-link">Site map</a></li>
+          <li>— <a href="#site-constraints" class="govuk-link">Relevant site constraints</a></li>
+          <li>— <a href="#site-history" class="govuk-link">Relevant site history</a></li>
+          <li>— <a href="#site-and-surroundings" class="govuk-link">Site and surroundings</a></li>
+          <li>— <a href="#planning-considerations-and-advice" class="govuk-link">Planning considerations and advice</a></li>
+          <li>— <a href="#summary-of-advice" class="govuk-link">Summary of advice</a></li>
+          <li>— <a href="#relevant-policies-and-guidance" class="govuk-link">Relevant policies and guidance</a></li>
+          <li>— <a href="#requirements" class="govuk-link">Requirements</a></li>
+          <li>— <a href="#next-steps" class="govuk-link">Next Steps</a></li>
+          <li>— <a href="#disclaimer" class="govuk-link">Disclaimer</a></li>
+        </ul>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="pre-application-outcome">Pre-application outcome</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="outcome-title" data-module="govuk-notification-banner" style="margin-top: 30px; margin-bottom: 30px;">
+          <div class="govuk-notification-banner__header">
+            <h3 class="govuk-notification-banner__title" id="outcome-title">
+              Outcome
+            </h3>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              Likely to be supported
+            </p>
+            <p class="govuk-body">Your proposal is likely to be supported based on the information you have provided.</p>
+          </div>
+        </div>
+        <div class="app-review-controls" data-section="pre-application-outcome">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Pre-application outcome">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-pre-application-outcome">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-pre-application-outcome" name="comments-pre-application-outcome" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="officer-contact-details">Officer contact details</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <dl class="govuk-summary-list app-section-content">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Case officer</dt>
+            <dd class="govuk-summary-list__value">Federico Carbo</dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Email</dt>
+            <dd class="govuk-summary-list__value"><a href="mailto:planning.applications@southwark.gov.uk" class="govuk-link">planning.applications@southwark.gov.uk</a></dd>
+          </div>
+        </dl>
+        <div class="app-review-controls" data-section="officer-contact-details">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Officer contact details">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-officer-contact-details">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-officer-contact-details" name="comments-officer-contact-details" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="your-pre-application-details">Your pre-application details</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">This section summarises your proposal and key dates in the pre-application process.</p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Event</th>
+              <th scope="col" class="govuk-table__header">Date</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Date made valid</td>
+              <td class="govuk-table__cell">4 December 2025</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Site visit</td>
+              <td class="govuk-table__cell">-</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Meeting</td>
+              <td class="govuk-table__cell">-</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="app-review-controls" data-section="your-pre-application-details">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Your pre-application details">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-your-pre-application-details">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-your-pre-application-details" name="comments-your-pre-application-details" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="description-of-your-proposal">Description of your proposal</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">Add a conservatory onto the rear of my first storey to use as a reading room and library. This is additional for testing.</p>
+        <div class="govuk-inset-text">
+          <strong>Note:</strong> The case officer has updated the description to accurately reflect the proposed development.
+        </div>
+        <div class="app-review-controls" data-section="description-of-your-proposal">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Description of your proposal">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-description-of-your-proposal">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-description-of-your-proposal" name="comments-description-of-your-proposal" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="site-map">Site map</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <div id="site-map-container" class="app-map-container"></div>
+        <div class="app-review-controls" data-section="site-map">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Site map">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-site-map">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-site-map" name="comments-site-map" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="site-constraints">Relevant site constraints</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <table class="govuk-table app-section-content">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Category</th>
+              <th scope="col" class="govuk-table__header">Constraint</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">General policy</td>
+              <td class="govuk-table__cell">Road classified</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">General policy</td>
+              <td class="govuk-table__cell">Conservation area</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Trees</td>
+              <td class="govuk-table__cell">Tree Preservation Order (TPO)</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Ecology</td>
+              <td class="govuk-table__cell">Site of Special Scientific Interest (SSSI)</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="app-review-controls" data-section="site-constraints">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Relevant site constraints">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-site-constraints">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-site-constraints" name="comments-site-constraints" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="site-history">Relevant site history</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <div class="govuk-summary-card app-section-content">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">25/02349/LDCE</h3>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Decision</dt>
+                <dd class="govuk-summary-list__value"><strong class="govuk-tag govuk-tag--green">Permitted</strong></dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Decision date</dt>
+                <dd class="govuk-summary-list__value">11 September 2025</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Description</dt>
+                <dd class="govuk-summary-list__value">Application for a Certificate of Lawfulness (Existing) with respect to use of the property as two self-contained flats (Use Class C3).</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">91/00720/PLANAP</h3>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Decision</dt>
+                <dd class="govuk-summary-list__value"><strong class="govuk-tag govuk-tag--red">Refused</strong></dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Decision date</dt>
+                <dd class="govuk-summary-list__value">6 December 1991</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Description</dt>
+                <dd class="govuk-summary-list__value">Erection of a rear roof extension, the installation of 2 velux rooflights on the front pitch and the provision of a rear roof terrace. (Regd. plan Nos.34894/91/0720. Applicant's plan Nos.9115/1)</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="app-review-controls" data-section="site-history">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Relevant site history">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-site-history">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-site-history" name="comments-site-history" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="site-and-surroundings">Site and surroundings</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">The application site comprises a two-storey Victorian mid-terrace dwelling constructed of yellow London stock brick with a slate roof and original timber sash windows to the front elevation. The rear garden extends approximately 12 metres and is enclosed by timber fencing to the side boundaries. The property is flanked by similar two-storey Victorian terraced dwellings at Nos. 1 and 3 Desendans Road, with No. 3 having an existing single-storey rear extension. To the rear, the site backs onto the gardens of properties fronting Elmwood Avenue.</p>
+        <p class="govuk-body">The site is located within the Green Village Conservation Area. A mature oak tree subject to a Tree Preservation Order (TPO/2019/0042) stands in the rear garden of No. 3, with its canopy extending partially over the application site. The property also falls within the buffer zone of Southwark Woods Site of Special Scientific Interest (SSSI), located approximately 150 metres to the east.</p>
+        <p class="govuk-body">The surrounding area is predominantly residential in character, comprising Victorian and Edwardian terraced housing. Desendans Road is an unclassified road within a 20mph zone. Local amenities including shops and a primary school are situated on Green Village High Street, approximately 200 metres to the north, and the area benefits from good public transport links with Green Village Station within a 5-minute walk.</p>
+        <div class="app-review-controls" data-section="site-and-surroundings">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Site and surroundings">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-site-and-surroundings">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-site-and-surroundings" name="comments-site-and-surroundings" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="planning-considerations-and-advice">Planning considerations and advice</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <div class="app-section-content">
+          <p class="govuk-body">This section includes the case officer's assessment of your proposal against relevant policy and guidance. The elements of the proposal are grouped by how acceptable they are.</p>
+
+          <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"><strong class="govuk-tag govuk-tag--green">Supported</strong></dt>
+              <dd class="govuk-summary-list__value">The element of the proposal is likely to be supported</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"><strong class="govuk-tag govuk-tag--yellow">Needs changes</strong></dt>
+              <dd class="govuk-summary-list__value">The element is likely to be supported subject to suggested changes</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"><strong class="govuk-tag govuk-tag--red">Does not comply</strong></dt>
+              <dd class="govuk-summary-list__value">The element will not be acceptable and permission is likely to be refused</dd>
+            </div>
+          </dl>
+
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Summary of considerations</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Consideration</th>
+                <th scope="col" class="govuk-table__header">Element of proposal</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Land use</td>
+                <td class="govuk-table__cell">Residential extension</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Supported</strong></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Design and heritage</td>
+                <td class="govuk-table__cell">Rear conservatory design</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Needs changes</strong></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Design and heritage</td>
+                <td class="govuk-table__cell">Materials</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Supported</strong></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Neighbour amenity</td>
+                <td class="govuk-table__cell">Impact on No. 3</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Needs changes</strong></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Trees</td>
+                <td class="govuk-table__cell">Proximity to TPO oak</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Does not comply</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Detailed assessments</h3>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h4 class="govuk-summary-card__title">Land use: Residential extension</h4>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--green">Supported</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) – Policy P1 (Social rented and intermediate housing)</p>
+              <p class="govuk-body">The proposed works are for the extension and alteration of an existing residential dwelling, which is an acceptable land use in this location. There are no policy concerns regarding the principle of development.</p>
+            </div>
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h4 class="govuk-summary-card__title">Design and heritage: Rear conservatory design</h4>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--yellow">Needs changes</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) – Policy P13 (Design of places), Policy P19 (Conservation areas)</p>
+              <p class="govuk-body">The proposed conservatory design is generally acceptable in terms of scale and massing. However, the current proposal includes uPVC frames which are not considered appropriate within the Green Village Conservation Area. The frames should be changed to painted timber or aluminium with a slim profile to preserve the character of the area. Subject to this amendment, the design would be supported.</p>
+            </div>
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h4 class="govuk-summary-card__title">Design and heritage: Materials</h4>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--green">Supported</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) – Policy P13 (Design of places), Policy P19 (Conservation areas)</p>
+              <p class="govuk-body">The proposed use of London stock brick for the dwarf walls and natural slate for any solid roof elements is considered appropriate and sympathetic to the existing dwelling and conservation area setting.</p>
+            </div>
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h4 class="govuk-summary-card__title">Neighbour amenity: Impact on No. 3</h4>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--yellow">Needs changes</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) – Policy P14 (Residential design)</p>
+              <p class="govuk-body">The proposed conservatory extends 4 metres from the rear elevation. Given the orientation of the site and the existing single-storey extension at No. 3, there is potential for some loss of light to the rear habitable room window of that property. It is recommended that the depth be reduced to 3 metres or that a 45-degree splay be incorporated on the boundary side to mitigate this impact.</p>
+            </div>
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h4 class="govuk-summary-card__title">Trees: Proximity to TPO oak</h4>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--red">Does not comply</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) – Policy P60 (Biodiversity), Policy P61 (Trees)</p>
+              <p class="govuk-body">The proposed conservatory footprint encroaches within the root protection area (RPA) of the mature oak tree at No. 3 Desendans Road, which is protected by TPO/2019/0042. The current proposal would require excavation within 6 metres of the trunk, which would cause significant harm to the tree's root system. This element cannot be supported in its current form. The applicant should commission an arboricultural impact assessment and revise the footprint to remain entirely outside the RPA, or demonstrate that construction methods (such as pile foundations) can avoid root damage.</p>
+            </div>
+          </div>
+        </div>
+        <div class="app-review-controls" data-section="planning-considerations-and-advice">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Planning considerations and advice">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-planning-considerations-and-advice">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-planning-considerations-and-advice" name="comments-planning-considerations-and-advice" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="summary-of-advice">Summary of advice</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">This is the case officer's summary of the conclusions and advice.</p>
+        <p class="govuk-body">Your proposal for a rear conservatory is likely to be supported in principle, however there are changes you will need to make before submitting a formal application. The conservatory frames must be timber or slim-profile aluminium rather than uPVC to comply with conservation area requirements. The depth of the extension should be reduced from 4 metres to 3 metres, or incorporate a 45-degree splay on the boundary with No. 3, to avoid unacceptable impact on your neighbour's amenity. Most critically, the current footprint encroaches into the root protection area of the protected oak tree at No. 3 and cannot be supported. You will need to commission an arboricultural impact assessment and redesign the footprint to sit entirely outside the RPA, or propose construction methods that avoid root damage.</p>
+        <div class="app-review-controls" data-section="summary-of-advice">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Summary of advice">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-summary-of-advice">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-summary-of-advice" name="comments-summary-of-advice" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="relevant-policies-and-guidance">Relevant policies and guidance</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">The following policies and guidance are relevant to this proposal.</p>
+        <ul class="govuk-list govuk-list--spaced">
+          <li><a href="https://www.southwark.gov.uk/planning-and-building-control/planning-policy-and-transport-policy/new-southwark-plan" class="govuk-link">P1: Social rented and intermediate housing</a></li>
+          <li><a href="https://www.southwark.gov.uk/planning-and-building-control/planning-policy-and-transport-policy/new-southwark-plan" class="govuk-link">P13: Design of places</a></li>
+          <li><a href="https://www.southwark.gov.uk/planning-and-building-control/planning-policy-and-transport-policy/new-southwark-plan" class="govuk-link">P14: Residential design</a></li>
+          <li><a href="https://www.southwark.gov.uk/planning-and-building-control/planning-policy-and-transport-policy/new-southwark-plan" class="govuk-link">P19: Conservation areas</a></li>
+          <li><a href="https://www.southwark.gov.uk/planning-and-building-control/planning-policy-and-transport-policy/new-southwark-plan" class="govuk-link">P60: Biodiversity</a></li>
+          <li><a href="https://www.southwark.gov.uk/planning-and-building-control/planning-policy-and-transport-policy/new-southwark-plan" class="govuk-link">P61: Trees</a></li>
+        </ul>
+        <div class="app-review-controls" data-section="relevant-policies-and-guidance">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Relevant policies and guidance">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-relevant-policies-and-guidance">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-relevant-policies-and-guidance" name="comments-relevant-policies-and-guidance" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="requirements">Requirements</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">The following documents and information will be required when you submit your formal planning application.</p>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">Drawings</h3>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Elevation drawings</dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">The drawings should show the building's outside now and after the proposed changes.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-0">Make sure you:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>submit an individual elevation drawing for the front, back, and both sides of the building</li>
+                    <li>show any proposed buildings (including household extensions and outbuildings) in context with neighbouring buildings</li>
+                    <li>scale plans at 1:100 or 1:50 on A4 and A3 paper size</li>
+                    <li>include a scale bar on each plan</li>
+                    <li>include a unique reference number on each drawing</li>
+                    <li>include written dimensions, especially for proposed extensions</li>
+                    <li>include details of materials used in the development</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Floor plans</dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">Floor plans should show the internal layout of the existing and proposed building.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-0">Make sure you:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>include existing and proposed plans</li>
+                    <li>scale plans at 1:100 or 1:50</li>
+                    <li>include room dimensions and uses</li>
+                    <li>show the relationship between the extension and existing rooms</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Site plan</dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">A site plan showing the proposal in relation to site boundaries and other buildings on site.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-0">Make sure you:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>scale at 1:200 or 1:500</li>
+                    <li>show the direction of north</li>
+                    <li>show the proposed extension in relation to site boundaries</li>
+                    <li>include the position of any trees on or adjacent to the site</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">Supporting</h3>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Design and access statement</dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">Required for applications within a conservation area.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-0">Make sure you:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>explain the design principles and concepts</li>
+                    <li>demonstrate how the proposal preserves or enhances the conservation area</li>
+                    <li>describe the materials and finishes proposed</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Arboricultural impact assessment</dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">Required due to the protected oak tree at the neighbouring property.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-0">Make sure you:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>commission a report from a qualified arboriculturist</li>
+                    <li>include a tree constraints plan showing root protection areas</li>
+                    <li>demonstrate that the proposal will not harm the protected tree</li>
+                    <li>include a method statement for construction if working near the RPA</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">Evidence</h3>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Photographs</dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">Photographs of the existing property and surrounding context.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-0">Make sure you:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>include photos of the rear elevation where the extension is proposed</li>
+                    <li>include photos showing the relationship with neighbouring properties</li>
+                    <li>include photos of the protected tree</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="app-review-controls" data-section="requirements">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Requirements">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-requirements">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-requirements" name="comments-requirements" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="next-steps">Next Steps</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">If you wish to submit an application, follow these clear steps to submit your formal application:</p>
+        <ol class="govuk-list govuk-list--number">
+          <li>Follow the advice in this report and update your proposal.</li>
+          <li>Prepare all requirements listed in this report.</li>
+          <li>Apply online for the <strong>householder planning permission</strong> using the <a href="https://www.planningportal.co.uk/" class="govuk-link">Planning Portal</a>.</li>
+        </ol>
+        <p class="govuk-body">The Planning Portal makes it easy to find the right fee and provide the right information. For further information on applying for householder planning permission, visit the <a href="https://www.southwark.gov.uk/planning-and-building-control/planning-applications" class="govuk-link">Southwark Council planning website</a>.</p>
+        <div class="app-review-controls" data-section="next-steps">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Next Steps">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-next-steps">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-next-steps" name="comments-next-steps" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <div class="app-section-header govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l" id="disclaimer">Disclaimer</h2>
+          <strong class="govuk-tag govuk-tag--grey app-review-tag">Not reviewed</strong>
+        </div>
+        <p class="govuk-body app-section-content">Please note that this pre-application advice follows initial officer assessment of the information you have provided. Every formal application is subject to a statutory assessment process and it is only then that a full assessment of all the material planning considerations can be made in the context of relevant development plan policies. Some important considerations may only arise or become apparent during this formal process which includes consultation with residents and other third parties affected by the development. This officer advice is therefore given for your general guidance in the preparation of a future planning application or proposal. The advice does not prejudice the Council's consideration or decision on any future application that may be submitted.</p>
+        <div class="app-review-controls" data-section="disclaimer">
+          <div class="app-review-buttons" role="group" aria-label="Review options for Disclaimer">
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
+            <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
+            <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+          </div>
+          <div class="app-review-comments" hidden>
+            <label class="govuk-label" for="comments-disclaimer">Comments for officer</label>
+            <textarea class="govuk-textarea" id="comments-disclaimer" name="comments-disclaimer" rows="3"></textarea>
+            <div class="app-review-comments__actions">
+              <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
+              <p class="govuk-body app-review-comments__saved-state">
+                Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-!-margin-top-6">
+          <button type="submit" class="govuk-button" data-module="govuk-button" id="submit-review">
+            Submit review
+          </button>
+        </div>
+
+      </main>
+    </div>
+
+    <footer class="govuk-footer">
+      <div class="govuk-width-container">
+        <div class="govuk-footer__meta">
+          <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+            <span class="govuk-footer__licence-description">
+              Built using the
+              <a class="govuk-footer__link" href="https://design-system.service.gov.uk/" rel="noopener noreferrer" target="_blank">
+                GOV.UK Design System
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <script>
+      (function() {
+        const reviewControls = document.querySelectorAll('.app-review-controls');
+
+        function getStatusTag(control) {
+          // The tag is now in the section header, which is the previous sibling of the placeholder box
+          const section = control.dataset.section;
+          return document.querySelector('.app-section-header #' + section).parentElement.querySelector('.app-review-tag');
+        }
+
+        function updateStatus(control, action) {
+          const statusEl = getStatusTag(control);
+
+          if (action === 'agree') {
+            control.dataset.status = 'agreed';
+            statusEl.className = 'govuk-tag govuk-tag--green app-review-tag';
+            statusEl.textContent = 'Agreed';
+          } else if (action === 'return') {
+            control.dataset.status = 'returned';
+            statusEl.className = 'govuk-tag govuk-tag--yellow app-review-tag';
+            statusEl.textContent = 'Returned for comments';
+          } else if (action === 'edit') {
+            // Edit doesn't change the status, just alerts for now
+          }
+        }
+
+        reviewControls.forEach(function(control) {
+          const buttons = control.querySelectorAll('.app-review-button');
+          const commentsSection = control.querySelector('.app-review-comments');
+
+          buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+              const action = this.dataset.action;
+
+              // Handle edit action separately
+              if (action === 'edit') {
+                const section = control.dataset.section;
+                alert('This would open the edit interface for: ' + section);
+                return;
+              }
+
+              // Reset all buttons in this group
+              buttons.forEach(function(btn) {
+                if (btn.dataset.action !== 'edit') {
+                  btn.setAttribute('aria-pressed', 'false');
+                }
+              });
+
+              // Toggle current button
+              const wasPressed = this.getAttribute('aria-pressed') === 'true';
+              if (!wasPressed) {
+                this.setAttribute('aria-pressed', 'true');
+              }
+
+              // Show/hide comments
+              if (action === 'return' && !wasPressed) {
+                commentsSection.removeAttribute('hidden');
+              } else {
+                commentsSection.setAttribute('hidden', '');
+              }
+
+              // Update status (only for agree, return status is set on save comment)
+              if (!wasPressed && action === 'agree') {
+                updateStatus(control, action);
+              } else if (wasPressed) {
+                // If unpressing, reset to not reviewed
+                control.removeAttribute('data-status');
+                const statusEl = getStatusTag(control);
+                statusEl.className = 'govuk-tag govuk-tag--grey app-review-tag';
+                statusEl.textContent = 'Not reviewed';
+              }
+            });
+          });
+        });
+
+        // Save comment buttons
+        document.querySelectorAll('.app-save-comment').forEach(function(button) {
+          button.addEventListener('click', function() {
+            const control = this.closest('.app-review-controls');
+            const commentsSection = control.querySelector('.app-review-comments');
+            const textarea = commentsSection.querySelector('.govuk-textarea');
+            const savedState = this.parentElement.querySelector('.app-review-comments__saved-state');
+
+            // Update status to "Returned for comments"
+            updateStatus(control, 'return');
+
+            // Disable textarea and show saved state
+            textarea.setAttribute('readonly', '');
+            commentsSection.classList.add('app-review-comments--saved');
+            savedState.classList.add('visible');
+          });
+        });
+
+        // Undo comment buttons
+        document.querySelectorAll('.app-undo-comment').forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const control = this.closest('.app-review-controls');
+            const commentsSection = control.querySelector('.app-review-comments');
+            const textarea = commentsSection.querySelector('.govuk-textarea');
+            const savedState = this.closest('.app-review-comments__saved-state');
+
+            // Re-enable textarea and hide saved state
+            textarea.removeAttribute('readonly');
+            commentsSection.classList.remove('app-review-comments--saved');
+            savedState.classList.remove('visible');
+
+            // Reset status to not reviewed
+            control.removeAttribute('data-status');
+            const statusEl = getStatusTag(control);
+            statusEl.className = 'govuk-tag govuk-tag--grey app-review-tag';
+            statusEl.textContent = 'Not reviewed';
+          });
+        });
+
+        // Submit review button
+        document.getElementById('submit-review').addEventListener('click', function() {
+          alert('Review submitted successfully!');
+        });
+      })();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+    <script>
+      (function() {
+        // Site boundary coordinates - residential property in Southwark
+        const siteBoundary = [
+          [-0.0785, 51.4785],
+          [-0.0780, 51.4788],
+          [-0.0775, 51.4786],
+          [-0.0778, 51.4782],
+          [-0.0785, 51.4785]
+        ];
+
+        // Transform coordinates to map projection
+        const transformedCoords = siteBoundary.map(coord =>
+          ol.proj.fromLonLat(coord)
+        );
+
+        // Create the site boundary feature
+        const boundaryFeature = new ol.Feature({
+          geometry: new ol.geom.Polygon([transformedCoords])
+        });
+
+        // Style for the boundary (red outline like in the screenshot)
+        const boundaryStyle = new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: '#d4351c',
+            width: 3
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(212, 53, 28, 0.1)'
+          })
+        });
+
+        boundaryFeature.setStyle(boundaryStyle);
+
+        // Vector layer for the boundary
+        const vectorLayer = new ol.layer.Vector({
+          source: new ol.source.Vector({
+            features: [boundaryFeature]
+          })
+        });
+
+        // Create the map with OSM tiles (as a stand-in for OS Maps)
+        const map = new ol.Map({
+          target: 'site-map-container',
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            }),
+            vectorLayer
+          ],
+          view: new ol.View({
+            center: ol.proj.fromLonLat([-0.0780, 51.4785]),
+            zoom: 18
+          }),
+          controls: ol.control.defaults.defaults().extend([
+            new ol.control.ScaleLine()
+          ])
+        });
+
+        // Fit the map to the boundary extent
+        map.getView().fit(boundaryFeature.getGeometry().getExtent(), {
+          padding: [50, 50, 50, 50],
+          maxZoom: 18
+        });
+      })();
+    </script>
+  </body>
+</html>

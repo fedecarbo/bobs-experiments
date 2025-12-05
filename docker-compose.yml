@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: govuk-frontend-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    working_dir: /app
+    stdin_open: true
+    tty: true
+
+volumes:
+  node_modules:

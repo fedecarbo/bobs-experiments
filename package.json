@@ -1,0 +1,16 @@
+{
+  "name": "bops-experiments",
+  "version": "1.0.0",
+  "description": "Project using GOV.UK Design System",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass src/scss/main.scss:public/stylesheets/main.css --load-path=node_modules --quiet-deps",
+    "watch:css": "sass src/scss/main.scss:public/stylesheets/main.css --load-path=node_modules --watch --quiet-deps"
+  },
+  "dependencies": {
+    "govuk-frontend": "^5.7.1"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

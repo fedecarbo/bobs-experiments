@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>BOPS Sidebar Concept 1 - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <style>
+      html, body {
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+      }
+      .govuk-template__body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Sidebar navigation */
+      .sidebar-nav {
+        list-style: none;
+        margin: 0;
+        padding: 16px 0;
+      }
+      .sidebar-nav__item {
+        margin: 0;
+      }
+      .sidebar-nav__link {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #1d70b8;
+        font-family: "GDS Transport", arial, sans-serif;
+        font-size: 1.1875rem;
+        line-height: 1.25;
+      }
+      .sidebar-nav__link:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+      .sidebar-nav__link:focus {
+        outline: 3px solid #ffdd00;
+        outline-offset: 0;
+        background-color: #ffdd00;
+        color: #0b0c0c;
+      }
+      .sidebar-nav__icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      .sidebar-nav__badge {
+        margin-left: auto;
+        min-width: 24px;
+        height: 24px;
+        padding: 0 8px;
+        border: 1px solid #1d70b8;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .sidebar-separator {
+        border: 0;
+        border-top: 1px solid #b1b4b6;
+        margin: 8px 20px;
+      }
+
+      /* Task list */
+      .task-list {
+        margin: 0;
+        padding: 0;
+      }
+      .task-list__heading {
+        margin: 0;
+        padding: 16px 20px 8px 20px;
+        color: #0b0c0c;
+      }
+      .task-list__items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .task-list__item {
+        margin: 0;
+      }
+      .task-list__link {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #0b0c0c;
+        font-family: "GDS Transport", arial, sans-serif;
+        font-size: 1.1875rem;
+        line-height: 1.25;
+        background-color: transparent;
+        transition: background-color 0.15s ease;
+      }
+      .task-list__link:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+      .task-list__link:focus {
+        outline: 3px solid #ffdd00;
+        outline-offset: 0;
+        background-color: #ffdd00;
+      }
+      .task-list__status {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Not started state */
+      .task-list__item--not-started .task-list__status::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border: 2px solid #b1b4b6;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      /* In progress / active state */
+      .task-list__item--in-progress .task-list__link {
+        background-color: rgba(29, 112, 184, 0.1);
+      }
+      .task-list__item--in-progress .task-list__link:hover {
+        background-color: rgba(29, 112, 184, 0.15);
+      }
+      .task-list__item--in-progress .task-list__status::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border: 2px solid #1d70b8;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      /* Complete state */
+      .task-list__item--complete .task-list__status {
+        width: 24px;
+        height: 24px;
+        background-color: #1d70b8;
+        border-radius: 4px;
+        position: relative;
+      }
+      .task-list__item--complete .task-list__status::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <div class="sticky-header" style="position: sticky; top: 0; z-index: 100;">
+      <header class="govuk-header" data-module="govuk-header" style="margin-bottom: 0; padding-bottom: 0; border-bottom: 10px solid #1d70b8;">
+        <div class="govuk-header__container" style="max-width: none; margin: 0; padding: 10px 15px 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 0;">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage" style="font-size: 24px;">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content" style="padding-left: 0; font-size: 19px; margin-left: auto; width: auto; float: none; display: flex; align-items: center;">
+            <span class="govuk-header__link" style="margin-right: 15px;">Pat Botsford</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+      <div class="case-summary" style="background-color: #f3f2f1; padding: 15px; display: flex; align-items: center; border-bottom: 1px solid #b1b4b6;">
+        <span class="govuk-body govuk-!-font-weight-bold" style="margin: 0;">25-00862-PRE</span>
+        <div style="border-left: 2px solid #b1b4b6; height: 20px; margin: 0 15px;"></div>
+        <span class="govuk-body" style="margin: 0;">75, MAIN STREET, DONCASTER, DN9 3HW</span>
+      </div>
+    </div>
+
+    <div class="page-layout" style="display: flex; flex: 1; overflow: hidden;">
+      <aside class="sidebar" style="width: 320px; background-color: #ffffff; border-right: 1px solid #b1b4b6; overflow-y: auto; flex-shrink: 0;">
+        <!-- Top navigation -->
+        <nav aria-label="Case navigation">
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav__item">
+              <a href="#" class="sidebar-nav__link">
+                <svg class="sidebar-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Overview
+              </a>
+            </li>
+            <li class="sidebar-nav__item">
+              <a href="#" class="sidebar-nav__link">
+                <svg class="sidebar-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                Meetings
+                <span class="sidebar-nav__badge">2</span>
+              </a>
+            </li>
+            <li class="sidebar-nav__item">
+              <a href="#" class="sidebar-nav__link">
+                <svg class="sidebar-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                  <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+                </svg>
+                Requests
+                <span class="sidebar-nav__badge">5</span>
+              </a>
+            </li>
+            <li class="sidebar-nav__item">
+              <a href="#" class="sidebar-nav__link">
+                <svg class="sidebar-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                Activity feed
+              </a>
+            </li>
+            <li class="sidebar-nav__item">
+              <a href="#" class="sidebar-nav__link">
+                <svg class="sidebar-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Notes
+                <span class="sidebar-nav__badge">1</span>
+              </a>
+            </li>
+            <li class="sidebar-nav__item">
+              <a href="#" class="sidebar-nav__link">
+                <svg class="sidebar-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Preview report
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="sidebar-separator">
+
+        <!-- Tasklist -->
+        <nav class="task-list" aria-label="Assessment tasks">
+          <h2 class="govuk-heading-s task-list__heading">Tasklist</h2>
+          <ul class="task-list__items">
+            <li class="task-list__item task-list__item--complete">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Pre-application details</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--complete">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Proposal description</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--in-progress">
+              <a href="#" class="task-list__link" aria-current="page">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Site map</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--not-started">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Relevant site constraints</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--not-started">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Relevant site history</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--not-started">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Site and surroundings</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--not-started">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Heads of terms</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--not-started">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Planning advice</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--not-started">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Summary of advice</span>
+              </a>
+            </li>
+            <li class="task-list__item task-list__item--not-started">
+              <a href="#" class="task-list__link">
+                <span class="task-list__status" aria-hidden="true"></span>
+                <span class="task-list__name">Relevant policies and guidance</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content" id="main-content" role="main" style="flex: 1; padding: 30px; overflow-y: auto;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+          <h1 class="govuk-heading-xl">Site map</h1>
+
+          <p class="govuk-body">
+            This is the site map task. Content for this task will be displayed here.
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+  </body>
+</html>
