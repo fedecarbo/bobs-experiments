@@ -40,18 +40,12 @@
         background-color: #bbd4ea;
         border-radius: 4px;
         overflow: hidden;
-        display: flex;
       }
       .sidebar-progress__fill {
         height: 100%;
+        background-color: #1d70b8;
         width: 0%;
         transition: width 0.3s ease;
-      }
-      .sidebar-progress__fill--agreed {
-        background-color: #1d70b8;
-      }
-      .sidebar-progress__fill--returned {
-        background-color: #f47738;
       }
 
       /* Task list */
@@ -268,8 +262,7 @@
             <span class="govuk-body-s govuk-!-margin-bottom-0"><strong id="progress-count">0</strong> of <strong>14</strong></span>
           </div>
           <div class="sidebar-progress__bar">
-            <div class="sidebar-progress__fill sidebar-progress__fill--agreed" id="progress-fill-agreed"></div>
-            <div class="sidebar-progress__fill sidebar-progress__fill--returned" id="progress-fill-returned"></div>
+            <div class="sidebar-progress__fill" id="progress-fill"></div>
           </div>
         </div>
         <!-- Tasklist -->
@@ -1168,8 +1161,7 @@
       (function() {
         const reviewControls = document.querySelectorAll('.app-review-controls');
         const totalSections = reviewControls.length;
-        const progressFillAgreed = document.getElementById('progress-fill-agreed');
-        const progressFillReturned = document.getElementById('progress-fill-returned');
+        const progressFill = document.getElementById('progress-fill');
         const progressCount = document.getElementById('progress-count');
         const progressBar = document.querySelector('.sidebar-progress');
 
@@ -1179,15 +1171,10 @@
         const returnedIcon = '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#f47738"/><path stroke-linecap="round" stroke-linejoin="round" stroke="#ffffff" stroke-width="2" fill="none" d="M13 16 8 12m0 0 5-4M8 12h9"/></svg>';
 
         function updateProgress() {
-          const agreedCount = document.querySelectorAll('.app-review-controls[data-status="agreed"]').length;
-          const returnedCount = document.querySelectorAll('.app-review-controls[data-status="returned"]').length;
-          const reviewedCount = agreedCount + returnedCount;
+          const reviewedCount = document.querySelectorAll('.app-review-controls[data-status]').length;
+          const percentage = (reviewedCount / totalSections) * 100;
 
-          const agreedPercentage = (agreedCount / totalSections) * 100;
-          const returnedPercentage = (returnedCount / totalSections) * 100;
-
-          progressFillAgreed.style.width = agreedPercentage + '%';
-          progressFillReturned.style.width = returnedPercentage + '%';
+          progressFill.style.width = percentage + '%';
           progressCount.textContent = reviewedCount;
           progressBar.setAttribute('aria-valuenow', reviewedCount);
         }
