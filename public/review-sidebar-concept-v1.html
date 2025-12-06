@@ -225,6 +225,33 @@
       .app-review-comments--saved .app-review-comments__actions .app-save-comment {
         display: none;
       }
+
+      /* Proposal description toggle */
+      .case-summary__toggle {
+        margin-left: 15px;
+      }
+      @media (max-width: 1024px) {
+        .case-summary__toggle {
+          display: block;
+          width: 100%;
+          margin-left: 0;
+          margin-top: 10px;
+        }
+      }
+      .case-summary__description {
+        display: none;
+        margin-top: 10px;
+        margin-left: 0;
+        padding-left: 0;
+        width: 100%;
+      }
+      .case-summary__description.is-visible {
+        display: block;
+      }
+      .case-summary__description p {
+        margin: 0;
+        padding: 0;
+      }
     </style>
   </head>
   <body class="govuk-template__body">
@@ -246,10 +273,14 @@
           </div>
         </div>
       </header>
-      <div class="case-summary" style="background-color: #f4f8fb; padding: 15px; display: flex; align-items: center; border-bottom: 1px solid #8eb8dc;">
+      <div class="case-summary" style="background-color: #f4f8fb; padding: 15px; display: flex; align-items: center; flex-wrap: wrap; border-bottom: 1px solid #8eb8dc;">
         <span class="govuk-body govuk-!-font-weight-bold" style="margin: 0;">23-00527-PRE</span>
         <div style="border-left: 2px solid #b1b4b6; height: 20px; margin: 0 15px;"></div>
         <span class="govuk-body" style="margin: 0;">2 Desendans Road, Green Village, BU2 3RH</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Add a conservatory onto the rear of my first storey to use as a reading room and library.</p>
+        </div>
       </div>
     </div>
 
@@ -415,6 +446,7 @@
 
       <main class="main-content" id="main-content" role="main" style="flex: 1; padding: 30px; overflow-y: auto;">
         <div class="main-content-wrapper">
+          <a href="#" class="govuk-back-link">Back to Application details</a>
           <h1 class="govuk-heading-xl">Pre-application report</h1>
 
           <p class="govuk-body-l">
@@ -454,8 +486,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-pre-application-outcome">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-pre-application-outcome" name="comments-pre-application-outcome" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-pre-application-outcome">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-pre-application-outcome" name="comments-pre-application-outcome" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -488,8 +522,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-officer-contact-details">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-officer-contact-details" name="comments-officer-contact-details" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-officer-contact-details">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-officer-contact-details" name="comments-officer-contact-details" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -535,8 +571,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-your-pre-application-details">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-your-pre-application-details" name="comments-your-pre-application-details" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-your-pre-application-details">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-your-pre-application-details" name="comments-your-pre-application-details" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -563,8 +601,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-description-of-your-proposal">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-description-of-your-proposal" name="comments-description-of-your-proposal" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-description-of-your-proposal">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-description-of-your-proposal" name="comments-description-of-your-proposal" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -591,8 +631,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-site-map">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-site-map" name="comments-site-map" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-site-map">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-site-map" name="comments-site-map" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -641,8 +683,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-site-constraints">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-site-constraints" name="comments-site-constraints" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-site-constraints">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-site-constraints" name="comments-site-constraints" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -707,8 +751,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-site-history">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-site-history" name="comments-site-history" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-site-history">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-site-history" name="comments-site-history" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -731,11 +777,13 @@
             <div class="app-review-buttons" role="group" aria-label="Review options for Site and surroundings">
               <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
               <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
-              <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
+              <a href="edit-site-and-surroundings.html" class="govuk-link app-review-link">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-site-and-surroundings">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-site-and-surroundings" name="comments-site-and-surroundings" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-site-and-surroundings">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-site-and-surroundings" name="comments-site-and-surroundings" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -881,8 +929,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-planning-considerations-and-advice">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-planning-considerations-and-advice" name="comments-planning-considerations-and-advice" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-planning-considerations-and-advice">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-planning-considerations-and-advice" name="comments-planning-considerations-and-advice" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -907,8 +957,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-summary-of-advice">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-summary-of-advice" name="comments-summary-of-advice" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-summary-of-advice">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-summary-of-advice" name="comments-summary-of-advice" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -940,8 +992,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-relevant-policies-and-guidance">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-relevant-policies-and-guidance" name="comments-relevant-policies-and-guidance" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-relevant-policies-and-guidance">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-relevant-policies-and-guidance" name="comments-relevant-policies-and-guidance" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -1074,8 +1128,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-requirements">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-requirements" name="comments-requirements" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-requirements">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-requirements" name="comments-requirements" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -1105,8 +1161,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-next-steps">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-next-steps" name="comments-next-steps" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-next-steps">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-next-steps" name="comments-next-steps" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -1130,8 +1188,10 @@
               <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
-              <label class="govuk-label" for="comments-disclaimer">Comments for officer</label>
-              <textarea class="govuk-textarea" id="comments-disclaimer" name="comments-disclaimer" rows="3"></textarea>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="comments-disclaimer">Comments for officer</label>
+                <textarea class="govuk-textarea" id="comments-disclaimer" name="comments-disclaimer" rows="5"></textarea>
+              </div>
               <div class="app-review-comments__actions">
                 <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
                 <p class="govuk-body app-review-comments__saved-state">
@@ -1385,6 +1445,20 @@
           maxZoom: 18
         });
       })();
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('.case-summary__toggle');
+        const description = document.getElementById('proposal-description');
+
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', !isExpanded);
+          description.classList.toggle('is-visible');
+          toggle.textContent = isExpanded ? 'Show proposal description' : 'Hide proposal description';
+        });
+      });
     </script>
   </body>
 </html>
