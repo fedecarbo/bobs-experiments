@@ -1,0 +1,57 @@
+/**
+ * Case Summary CSS
+ * Case reference bar with collapsible proposal description
+ */
+
+.case-summary {
+  background-color: #f4f8fb;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #8eb8dc;
+}
+
+.case-summary__reference {
+  margin: 0;
+}
+
+.case-summary__divider {
+  border-left: 2px solid #b1b4b6;
+  height: 20px;
+  margin: 0 15px;
+}
+
+.case-summary__address {
+  margin: 0;
+}
+
+.case-summary__toggle {
+  margin-left: 15px;
+}
+
+@media (max-width: 1024px) {
+  .case-summary__toggle {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+.case-summary__description {
+  display: none;
+  margin-top: 10px;
+  margin-left: 0;
+  padding-left: 0;
+  width: 100%;
+}
+
+.case-summary__description.is-visible {
+  display: block;
+}
+
+.case-summary__description p {
+  margin: 0;
+  padding: 0;
+}

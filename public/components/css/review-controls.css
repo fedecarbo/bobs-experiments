@@ -1,0 +1,105 @@
+/**
+ * Review Controls CSS
+ * Agree/Return buttons, comments section (Review workflow only)
+ */
+
+.app-review-controls {
+  margin-top: 30px;
+}
+
+/* Button group */
+.app-review-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: center;
+}
+
+.app-review-button {
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  padding: 8px 15px;
+  border: 2px solid #1d70b8;
+  background-color: #ffffff;
+  color: #1d70b8;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.app-review-button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.app-review-button:nth-child(2) {
+  border-radius: 0 4px 4px 0;
+}
+
+.app-review-button:not(:first-child):not(.app-review-button--link) {
+  margin-left: -2px;
+}
+
+.app-review-link {
+  margin-left: 15px;
+}
+
+.app-review-button:hover {
+  background-color: #f3f2f1;
+}
+
+.app-review-button:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+  z-index: 1;
+}
+
+.app-review-button[aria-pressed="true"] {
+  background-color: #1d70b8;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.app-review-button[aria-pressed="true"]:hover {
+  background-color: #003078;
+}
+
+/* Comments section */
+.app-review-comments {
+  margin-top: 15px;
+}
+
+.app-review-comments[hidden] {
+  display: none;
+}
+
+.app-review-comments .govuk-textarea {
+  margin-bottom: 10px;
+}
+
+.app-review-comments__actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.app-review-comments__saved-state {
+  display: none;
+  margin-bottom: 0;
+}
+
+.app-review-comments__saved-state.visible {
+  display: block;
+}
+
+/* Saved state styling */
+.app-review-comments--saved .govuk-textarea {
+  background-color: #f3f2f1;
+  color: #505a5f;
+  border-color: #b1b4b6;
+}
+
+.app-review-comments--saved .app-review-comments__actions .app-save-comment {
+  display: none;
+}

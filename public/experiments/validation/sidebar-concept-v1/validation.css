@@ -1,0 +1,236 @@
+/**
+ * Validation-specific styles
+ * Extends the shared component styles for validation workflow
+ */
+
+/* Task list header */
+.task-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 20px 20px 20px 20px;
+}
+
+.task-list__header .task-list__heading {
+  padding: 0;
+}
+
+.task-list__reset {
+  font-size: 16px;
+}
+
+/* Task group headings */
+.task-list__group-heading {
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #505a5f;
+  margin: 0;
+  padding: 8px 20px 5px 20px;
+}
+
+/* First group heading - more space from main title */
+.task-list__group-heading:first-of-type {
+  padding-top: 0;
+}
+
+/* Task items list - tight to group heading */
+.task-list__items {
+  padding-bottom: 0;
+}
+
+/* Task status icons for validation workflow - match Review sidebar style */
+.task-list__item--not-started .task-list__status-icon circle {
+  fill: #bbd4ea;
+  stroke: none;
+}
+
+.task-list__item--completed .task-list__status-icon circle {
+  fill: #1d70b8;
+  stroke: none;
+}
+
+/* Current page - black text, not a link, no background change */
+.task-list__item--current {
+  background-color: transparent;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.task-list__item--current .task-list__name {
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+}
+
+.task-list__item--current .task-list__link {
+  text-decoration: none;
+}
+
+/* Validation action buttons */
+.validation-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.validation-actions .govuk-button {
+  margin-bottom: 0;
+}
+
+/* Form sections */
+.validation-form-section {
+  margin-bottom: 40px;
+}
+
+.validation-form-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Validation check items */
+.validation-check {
+  padding: 15px 0;
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.validation-check:last-child {
+  border-bottom: none;
+}
+
+.validation-check__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.validation-check__title {
+  margin: 0;
+  flex: 1;
+}
+
+.validation-check__content {
+  margin-top: 10px;
+}
+
+/* Document list for validation */
+.document-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.document-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.document-list__item:last-child {
+  border-bottom: none;
+}
+
+.document-list__info {
+  flex: 1;
+}
+
+.document-list__name {
+  display: block;
+  font-weight: 700;
+}
+
+.document-list__meta {
+  display: block;
+  color: #505a5f;
+  font-size: 0.875rem;
+}
+
+.document-list__actions {
+  display: flex;
+  gap: 15px;
+}
+
+/* Document table filename and tags */
+.document-filename {
+  display: block;
+  font-weight: 700;
+}
+
+.document-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.document-tags .govuk-tag {
+  font-size: 19px;
+  max-width: none;
+}
+
+/* Constraint table styles */
+.constraint-table {
+  margin-bottom: 30px;
+}
+
+.constraint-table .govuk-table__header,
+.constraint-table .govuk-table__cell {
+  vertical-align: top;
+}
+
+/* Inset panel for validation notes */
+.validation-note {
+  background-color: #f3f2f1;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.validation-note p:last-child {
+  margin-bottom: 0;
+}
+
+/* Fee breakdown table */
+.fee-table .govuk-table__cell--numeric {
+  text-align: right;
+}
+
+.fee-table .fee-total {
+  font-weight: 700;
+  border-top: 2px solid #0b0c0c;
+}
+
+/* Page header - tighter spacing between title and description */
+.main-content-wrapper > .govuk-heading-xl {
+  margin-bottom: 10px;
+}
+
+/* Section divider after page description */
+.page-description {
+  margin-bottom: 20px;
+}
+
+/* Status tag after description */
+.page-status {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #b1b4b6;
+  margin-bottom: 30px;
+}
+
+/* Content loading transitions */
+.main-content-wrapper {
+  opacity: 1;
+  transition: opacity 150ms ease;
+}
+
+/* Focus styles for main content (accessibility) */
+#main-content:focus {
+  outline: none;
+}
+
+#main-content:focus-visible {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}

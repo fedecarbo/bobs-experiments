@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Validation decision - Validation - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <!-- GOV.UK Frontend -->
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+
+    <!-- Validation-specific styles -->
+    <link rel="stylesheet" href="validation.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Alex Morgan</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Case Summary -->
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">24-00142-HAPP</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">45 Elmwood Avenue, Southwark, SE15 4RT</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Erection of a single storey rear extension and associated internal alterations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Layout -->
+    <div class="page-layout">
+      <!-- Sidebar - rendered by validation-sidebar.js -->
+      <aside class="sidebar"></aside>
+
+      <!-- Main Content -->
+      <main class="main-content" id="main-content" role="main" tabindex="-1">
+        <div class="main-content-wrapper">
+          <a href="index.html" class="govuk-back-link">Back to validation tasks</a>
+
+          <h1 class="govuk-heading-xl">Validation decision</h1>
+
+          <p class="govuk-body page-description">Review the summary of your validation checks and make a decision.</p>
+
+          <div class="page-status">
+            <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+          </div>
+
+          <h2 class="govuk-heading-m">Summary of validation checks</h2>
+
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Task</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+                <th scope="col" class="govuk-table__header">Notes</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Application type</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Valid</strong></td>
+                <td class="govuk-table__cell">Householder application confirmed</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Site address</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Valid</strong></td>
+                <td class="govuk-table__cell">Address verified</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Description of proposal</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Valid</strong></td>
+                <td class="govuk-table__cell">Description acceptable</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Site constraints</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Valid</strong></td>
+                <td class="govuk-table__cell">3 constraints identified</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Documents</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Issues</strong></td>
+                <td class="govuk-table__cell">Heritage statement missing</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Applicant and agent</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Valid</strong></td>
+                <td class="govuk-table__cell">Details complete</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Fee</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Valid</strong></td>
+                <td class="govuk-table__cell">Correct fee paid</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              There is 1 issue that needs to be resolved before this application can be made valid.
+            </strong>
+          </div>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <form>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">What is your validation decision?</h2>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="decision-valid" name="decision" type="radio" value="valid">
+                    <label class="govuk-label govuk-radios__label" for="decision-valid">
+                      Make application valid
+                    </label>
+                    <div class="govuk-hint govuk-radios__hint">
+                      The application meets all requirements and can proceed to assessment
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="decision-request-info" name="decision" type="radio" value="request" data-aria-controls="conditional-decision-request">
+                    <label class="govuk-label govuk-radios__label" for="decision-request-info">
+                      Request more information
+                    </label>
+                    <div class="govuk-hint govuk-radios__hint">
+                      The application is incomplete and more information is needed
+                    </div>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-decision-request">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="info-needed">
+                        What information is needed?
+                      </label>
+                      <div class="govuk-hint">
+                        This will be sent to the applicant or agent
+                      </div>
+                      <textarea class="govuk-textarea" id="info-needed" name="info-needed" rows="5">Please provide a Heritage Statement as the site is within the Peckham Rye Conservation Area. This should explain how the proposed development will preserve or enhance the character of the conservation area.</textarea>
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="decision-invalid" name="decision" type="radio" value="invalid" data-aria-controls="conditional-decision-invalid">
+                    <label class="govuk-label govuk-radios__label" for="decision-invalid">
+                      Mark as invalid
+                    </label>
+                    <div class="govuk-hint govuk-radios__hint">
+                      The application cannot be made valid and will be returned
+                    </div>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-decision-invalid">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="invalid-reason">
+                        Reason for invalidation
+                      </label>
+                      <textarea class="govuk-textarea" id="invalid-reason" name="invalid-reason" rows="5"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="validation-actions">
+              <button type="submit" class="govuk-button" data-module="govuk-button" data-action="complete">
+                Save and mark as complete
+              </button>
+              <a href="index.html" class="govuk-link">Save and come back later</a>
+            </div>
+          </form>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- GOV.UK Frontend JS -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <!-- Component JS -->
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="validation-sidebar.js"></script>
+    <script src="validation-controls.js"></script>
+    <script src="content-loader.js"></script>
+  </body>
+</html>

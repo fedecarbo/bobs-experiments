@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Fee - Validation - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <!-- GOV.UK Frontend -->
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+
+    <!-- Validation-specific styles -->
+    <link rel="stylesheet" href="validation.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Alex Morgan</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Case Summary -->
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">24-00142-HAPP</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">45 Elmwood Avenue, Southwark, SE15 4RT</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Erection of a single storey rear extension and associated internal alterations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Layout -->
+    <div class="page-layout">
+      <!-- Sidebar - rendered by validation-sidebar.js -->
+      <aside class="sidebar"></aside>
+
+      <!-- Main Content -->
+      <main class="main-content" id="main-content" role="main" tabindex="-1">
+        <div class="main-content-wrapper">
+          <a href="index.html" class="govuk-back-link">Back to validation tasks</a>
+
+          <h1 class="govuk-heading-xl">Fee</h1>
+
+          <p class="govuk-body page-description">Check the correct fee has been paid for this application.</p>
+
+          <div class="page-status">
+            <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+          </div>
+
+          <h2 class="govuk-heading-m">Fee calculation</h2>
+
+          <table class="govuk-table fee-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Description</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Householder application fee</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£258.00</td>
+              </tr>
+              <tr class="govuk-table__row fee-total">
+                <td class="govuk-table__cell">Total fee required</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£258.00</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 class="govuk-heading-m">Payment received</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Amount paid</dt>
+              <dd class="govuk-summary-list__value">£258.00</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Payment date</dt>
+              <dd class="govuk-summary-list__value">2 December 2024</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Payment method</dt>
+              <dd class="govuk-summary-list__value">Online (GOV.UK Pay)</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Reference</dt>
+              <dd class="govuk-summary-list__value">PAY-2024-00045678</dd>
+            </div>
+          </dl>
+
+          <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="fee-status" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h3 class="govuk-notification-banner__title" id="fee-status">
+                Status
+              </h3>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">
+                Correct fee paid
+              </p>
+            </div>
+          </div>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <form>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">Is the fee correct?</h2>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="fee-correct" name="fee" type="radio" value="correct" checked>
+                    <label class="govuk-label govuk-radios__label" for="fee-correct">
+                      Yes, the fee is correct
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="fee-wrong" name="fee" type="radio" value="wrong" data-aria-controls="conditional-fee-wrong">
+                    <label class="govuk-label govuk-radios__label" for="fee-wrong">
+                      No, the fee needs to be corrected
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-fee-wrong">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="correct-fee">
+                        What is the correct fee?
+                      </label>
+                      <div class="govuk-input__wrapper">
+                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                        <input class="govuk-input govuk-input--width-5" id="correct-fee" name="correct-fee" type="text" spellcheck="false">
+                      </div>
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="fee-reason">
+                        Reason for change
+                      </label>
+                      <textarea class="govuk-textarea" id="fee-reason" name="fee-reason" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="validation-actions">
+              <button type="submit" class="govuk-button" data-module="govuk-button" data-action="complete">
+                Save and mark as complete
+              </button>
+              <a href="index.html" class="govuk-link">Save and come back later</a>
+            </div>
+          </form>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- GOV.UK Frontend JS -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <!-- Component JS -->
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="validation-sidebar.js"></script>
+    <script src="validation-controls.js"></script>
+    <script src="content-loader.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+/**
+ * Header CSS
+ * BOPS header styling and sticky positioning
+ */
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.sticky-header .govuk-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 10px solid #1d70b8;
+}
+
+.sticky-header .govuk-header__container {
+  max-width: none;
+  margin: 0;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0;
+}
+
+.sticky-header .govuk-header__logo a {
+  font-size: 24px;
+}
+
+.sticky-header .govuk-header__content {
+  padding-left: 0;
+  font-size: 19px;
+  margin-left: auto;
+  width: auto;
+  float: none;
+  display: flex;
+  align-items: center;
+}
+
+.sticky-header .govuk-header__content .govuk-header__link:first-child {
+  margin-right: 15px;
+}

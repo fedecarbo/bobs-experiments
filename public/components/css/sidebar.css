@@ -1,0 +1,104 @@
+/**
+ * Sidebar CSS
+ * Progress bar and task list navigation
+ */
+
+/* Progress bar */
+.sidebar-progress {
+  padding: 20px;
+  border-bottom: 1px solid #8eb8dc;
+}
+
+.sidebar-progress__label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sidebar-progress__bar {
+  height: 8px;
+  background-color: #bbd4ea;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sidebar-progress__fill {
+  height: 100%;
+  background-color: #1d70b8;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* Task list */
+.task-list {
+  margin: 0;
+  padding: 0;
+}
+
+.task-list__heading {
+  margin: 0;
+  padding: 20px 20px 10px 20px;
+  color: #0b0c0c;
+}
+
+.task-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0 20px 15px 20px;
+}
+
+.task-list__item {
+  margin: 0;
+  padding: 12px 0 8px 0;
+  border-bottom: 1px solid #8eb8dc;
+}
+
+.task-list__item:last-child {
+  border-bottom: none;
+}
+
+.task-list__link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.task-list__status {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-list__status-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Status variants */
+.task-list__item--not-reviewed .task-list__status {
+  color: #b1b4b6;
+}
+
+.task-list__item--agreed .task-list__status {
+  color: #00703c;
+}
+
+.task-list__item--returned .task-list__status {
+  color: #f47738;
+}
+
+/* Current page highlight (for multi-page navigation) */
+.task-list__item--current {
+  background-color: #ffffff;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.task-list__item--current .task-list__link {
+  /* Normal weight when selected */
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Start Review - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <!-- GOV.UK Frontend -->
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <header class="govuk-header" data-module="govuk-header">
+      <div class="govuk-header__container govuk-width-container">
+        <div class="govuk-header__logo">
+          <a href="/" class="govuk-header__link govuk-header__link--homepage">
+            <strong>Southwark</strong> Back-office Planning System
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="govuk-width-container">
+      <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Review pre-application report</h1>
+
+            <p class="govuk-body-l">This prototype lets you review a pre-application report and provide feedback on each section.</p>
+
+            <form id="start-form">
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading">How do you want to access the review?</h2>
+                  </legend>
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="mode-admin" name="mode" type="radio" value="admin">
+                      <label class="govuk-label govuk-radios__label" for="mode-admin">
+                        <strong>Admin</strong>
+                      </label>
+                      <div class="govuk-hint govuk-radios__hint">
+                        Changes are saved globally and affect all users
+                      </div>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="mode-guest" name="mode" type="radio" value="guest" data-aria-controls="guest-name-group">
+                      <label class="govuk-label govuk-radios__label" for="mode-guest">
+                        <strong>Guest</strong>
+                      </label>
+                      <div class="govuk-hint govuk-radios__hint">
+                        Your review progress is saved separately from other users
+                      </div>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="guest-name-group">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="guest-name">
+                          Enter your name
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="guest-name" name="guest-name" type="text">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start review
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer class="govuk-footer">
+      <div class="govuk-width-container">
+        <div class="govuk-footer__meta">
+          <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+            <span class="govuk-footer__licence-description">
+              BOPS Experiments - Prototype for testing purposes only
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- GOV.UK Frontend JS -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <script>
+      document.getElementById('start-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var mode = document.querySelector('input[name="mode"]:checked');
+        if (!mode) {
+          alert('Please select how you want to access the review');
+          return;
+        }
+
+        var url = 'index.html';
+
+        if (mode.value === 'admin') {
+          url += '?mode=admin';
+        } else {
+          var name = document.getElementById('guest-name').value.trim();
+          if (!name) {
+            alert('Please enter your name');
+            document.getElementById('guest-name').focus();
+            return;
+          }
+          url += '?mode=guest&user=' + encodeURIComponent(name);
+        }
+
+        window.location.href = url;
+      });
+    </script>
+  </body>
+</html>

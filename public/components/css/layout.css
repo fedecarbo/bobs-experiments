@@ -1,0 +1,48 @@
+/**
+ * Layout CSS
+ * Page shell, flex layout, body/html setup
+ */
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.govuk-template__body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 320px;
+  background-color: #f4f8fb;
+  border-right: 1px solid #8eb8dc;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.main-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .main-content-wrapper > * {
+    max-width: 100%;
+  }
+}

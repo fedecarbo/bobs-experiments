@@ -1,3 +1,45 @@
+# BOPS Experiments
+
+Prototyping environment for designing and testing UI concepts for the Back-office Planning System before building them in production.
+
+## Architecture
+
+```
+public/
+├── components/           # Shared CSS/JS components
+│   ├── css/
+│   └── js/
+├── experiments/          # Organised by workflow
+│   ├── review/
+│   ├── validation/
+│   ├── assessment/
+│   ├── consultation/
+│   └── other/
+└── index.html            # Experiment directory
+```
+
+## Workflows
+
+- **Review**: Senior officer reviews report. Single-page, sidebar anchors scroll to sections. Uses Agree/Return/Edit controls.
+- **Validation**: Validating applications. Multi-page, sidebar links load separate pages.
+- **Assessment**: Case officer assessing applications.
+- **Consultation**: Managing consultee responses.
+
+## Component Reuse
+
+Components are shared across experiments. Change once, updates everywhere.
+Import only what's needed:
+- All experiments: layout.css, header.css, case-summary.css, sidebar.css
+- Review only: review-controls.css, review-controls.js
+
+## Creating New Experiments
+
+1. Create folder: `experiments/{workflow}/{name}/`
+2. Create `index.html`, import components from `/components/`
+3. Update `/index.html` landing page to link to new experiment
+
+---
+
 # GOV.UK Design System - Project Reference
 
 ## Current Setup

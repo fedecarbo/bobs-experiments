@@ -11,272 +11,58 @@
     <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
     <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
 
+    <!-- GOV.UK Frontend -->
     <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+
+    <!-- OpenLayers for map -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
-    <style>
-      html, body {
-        height: 100%;
-        overflow: hidden;
-        margin: 0;
-      }
-      .govuk-template__body {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
 
-      /* Sidebar progress bar */
-      .sidebar-progress {
-        padding: 20px;
-        border-bottom: 1px solid #8eb8dc;
-      }
-      .sidebar-progress__label {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
-      }
-      .sidebar-progress__bar {
-        height: 8px;
-        background-color: #bbd4ea;
-        border-radius: 4px;
-        overflow: hidden;
-      }
-      .sidebar-progress__fill {
-        height: 100%;
-        background-color: #1d70b8;
-        width: 0%;
-        transition: width 0.3s ease;
-      }
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+    <link rel="stylesheet" href="/components/css/review-controls.css">
 
-      /* Task list */
-      .task-list {
-        margin: 0;
-        padding: 0;
-      }
-      .task-list__heading {
-        margin: 0;
-        padding: 20px 20px 10px 20px;
-        color: #0b0c0c;
-      }
-      .task-list__items {
-        list-style: none;
-        margin: 0;
-        padding: 0 20px 15px 20px;
-      }
-      .task-list__item {
-        margin: 0;
-        padding: 12px 0 8px 0;
-        border-bottom: 1px solid #8eb8dc;
-      }
-      .task-list__item:last-child {
-        border-bottom: none;
-      }
-      .task-list__link {
-        display: inline-flex;
-        align-items: center;
-      }
-      .task-list__status {
-        flex-shrink: 0;
-        width: 24px;
-        height: 24px;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .task-list__status-icon {
-        width: 24px;
-        height: 24px;
-      }
-      .task-list__item--not-reviewed .task-list__status {
-        color: #b1b4b6;
-      }
-      .task-list__item--agreed .task-list__status {
-        color: #00703c;
-      }
-      .task-list__item--returned .task-list__status {
-        color: #f47738;
-      }
-
-      /* Main content */
-      .main-content {
-        scroll-behavior: smooth;
-      }
-      .main-content-wrapper {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      @media (max-width: 1024px) {
-        .main-content-wrapper > * {
-          max-width: 100%;
+    <!-- Redirect to start page if no mode specified (prevents flash of content) -->
+    <script>
+      (function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var mode = urlParams.get('mode');
+        var user = urlParams.get('user');
+        if (!mode || (mode === 'guest' && !user)) {
+          window.location.replace('start.html');
         }
-      }
-
-      /* Map container */
-      .app-map-container {
-        height: 400px;
-        margin-top: 30px;
-        border: 2px solid #0b0c0c;
-      }
-
-      /* Section content spacing */
-      .app-section-content {
-        margin-top: 30px;
-      }
-
-      /* Details list */
-      .app-details-list p {
-        margin-bottom: 5px;
-      }
-
-      /* Review controls */
-      .app-review-controls {
-        margin-top: 30px;
-      }
-      .app-section-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-      .app-section-header .govuk-heading-l {
-        margin-bottom: 0;
-      }
-      .app-review-tag {
-        flex: 0 0 auto;
-        white-space: nowrap;
-        width: auto !important;
-        max-width: none;
-      }
-      .app-review-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0;
-        align-items: center;
-      }
-      .app-review-button {
-        font-family: "GDS Transport", arial, sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.25;
-        padding: 8px 15px;
-        border: 2px solid #1d70b8;
-        background-color: #ffffff;
-        color: #1d70b8;
-        cursor: pointer;
-        margin: 0;
-        position: relative;
-      }
-      .app-review-button:first-child {
-        border-radius: 4px 0 0 4px;
-      }
-      .app-review-button:nth-child(2) {
-        border-radius: 0 4px 4px 0;
-      }
-      .app-review-button:not(:first-child):not(.app-review-button--link) {
-        margin-left: -2px;
-      }
-      .app-review-link {
-        margin-left: 15px;
-      }
-      .app-review-button:hover {
-        background-color: #f3f2f1;
-      }
-      .app-review-button:focus {
-        outline: 3px solid #ffdd00;
-        outline-offset: 0;
-        z-index: 1;
-      }
-      .app-review-button[aria-pressed="true"] {
-        background-color: #1d70b8;
-        color: #ffffff;
-        z-index: 1;
-      }
-      .app-review-button[aria-pressed="true"]:hover {
-        background-color: #003078;
-      }
-      .app-review-comments {
-        margin-top: 15px;
-      }
-      .app-review-comments[hidden] {
-        display: none;
-      }
-      .app-review-comments .govuk-textarea {
-        margin-bottom: 10px;
-      }
-      .app-review-comments__actions {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-      .app-review-comments__saved-state {
-        display: none;
-        margin-bottom: 0;
-      }
-      .app-review-comments__saved-state.visible {
-        display: block;
-      }
-      .app-review-comments--saved .govuk-textarea {
-        background-color: #f3f2f1;
-        color: #505a5f;
-        border-color: #b1b4b6;
-      }
-      .app-review-comments--saved .app-review-comments__actions .app-save-comment {
-        display: none;
-      }
-
-      /* Proposal description toggle */
-      .case-summary__toggle {
-        margin-left: 15px;
-      }
-      @media (max-width: 1024px) {
-        .case-summary__toggle {
-          display: block;
-          width: 100%;
-          margin-left: 0;
-          margin-top: 10px;
-        }
-      }
-      .case-summary__description {
-        display: none;
-        margin-top: 10px;
-        margin-left: 0;
-        padding-left: 0;
-        width: 100%;
-      }
-      .case-summary__description.is-visible {
-        display: block;
-      }
-      .case-summary__description p {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+      })();
+    </script>
   </head>
   <body class="govuk-template__body">
     <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
-    <div class="sticky-header" style="position: sticky; top: 0; z-index: 100;">
-      <header class="govuk-header" data-module="govuk-header" style="margin-bottom: 0; padding-bottom: 0; border-bottom: 10px solid #1d70b8;">
-        <div class="govuk-header__container" style="max-width: none; margin: 0; padding: 10px 15px 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 0;">
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
           <div class="govuk-header__logo">
-            <a href="/" class="govuk-header__link govuk-header__link--homepage" style="font-size: 24px;">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
               <strong>Southwark</strong> Back-office Planning System
             </a>
           </div>
-          <div class="govuk-header__content" style="padding-left: 0; font-size: 19px; margin-left: auto; width: auto; float: none; display: flex; align-items: center;">
-            <span class="govuk-header__link" style="margin-right: 15px;">Pat Botsford</span>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link" id="user-name">Pat Botsford</span>
             <a href="#" class="govuk-header__link">Log out</a>
           </div>
         </div>
       </header>
-      <div class="case-summary" style="background-color: #f4f8fb; padding: 15px; display: flex; align-items: center; flex-wrap: wrap; border-bottom: 1px solid #8eb8dc;">
-        <span class="govuk-body govuk-!-font-weight-bold" style="margin: 0;">23-00527-PRE</span>
-        <div style="border-left: 2px solid #b1b4b6; height: 20px; margin: 0 15px;"></div>
-        <span class="govuk-body" style="margin: 0;">2 Desendans Road, Green Village, BU2 3RH</span>
+
+      <!-- Case Summary -->
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">23-00527-PRE</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">2 Desendans Road, Green Village, BU2 3RH</span>
         <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
         <div class="case-summary__description" id="proposal-description">
           <p class="govuk-body">Add a conservatory onto the rear of my first storey to use as a reading room and library.</p>
@@ -284,8 +70,10 @@
       </div>
     </div>
 
-    <div class="page-layout" style="display: flex; flex: 1; overflow: hidden;">
-      <aside class="sidebar" style="width: 320px; background-color: #f4f8fb; border-right: 1px solid #8eb8dc; overflow-y: auto; flex-shrink: 0;">
+    <!-- Page Layout -->
+    <div class="page-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
         <!-- Progress bar -->
         <div class="sidebar-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="14" aria-label="Review progress">
           <div class="sidebar-progress__label">
@@ -296,7 +84,8 @@
             <div class="sidebar-progress__fill" id="progress-fill"></div>
           </div>
         </div>
-        <!-- Tasklist -->
+
+        <!-- Task list -->
         <nav class="task-list" aria-label="Pre-application report">
           <h2 class="govuk-heading-s task-list__heading">Pre-application report</h2>
           <ul class="task-list__items">
@@ -444,9 +233,10 @@
         </nav>
       </aside>
 
-      <main class="main-content" id="main-content" role="main" style="flex: 1; padding: 30px; overflow-y: auto;">
+      <!-- Main Content -->
+      <main class="main-content" id="main-content" role="main">
         <div class="main-content-wrapper">
-          <a href="#" class="govuk-back-link">Back to Application details</a>
+          <a href="/experiments/" class="govuk-back-link">Back to experiments</a>
           <h1 class="govuk-heading-xl">Pre-application report</h1>
 
           <p class="govuk-body-l">
@@ -702,47 +492,8 @@
             <h2 class="govuk-heading-l">Relevant site history</h2>
             <strong class="govuk-tag govuk-tag--grey app-review-tag" data-section-tag="site-history">Not reviewed</strong>
           </div>
-          <div class="govuk-summary-card app-section-content">
-            <div class="govuk-summary-card__title-wrapper">
-              <h3 class="govuk-summary-card__title">25/02349/LDCE</h3>
-            </div>
-            <div class="govuk-summary-card__content">
-              <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Decision</dt>
-                  <dd class="govuk-summary-list__value"><strong class="govuk-tag govuk-tag--green">Permitted</strong></dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Decision date</dt>
-                  <dd class="govuk-summary-list__value">11 September 2025</dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Description</dt>
-                  <dd class="govuk-summary-list__value">Application for a Certificate of Lawfulness (Existing) with respect to use of the property as two self-contained flats (Use Class C3).</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-          <div class="govuk-summary-card">
-            <div class="govuk-summary-card__title-wrapper">
-              <h3 class="govuk-summary-card__title">91/00720/PLANAP</h3>
-            </div>
-            <div class="govuk-summary-card__content">
-              <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Decision</dt>
-                  <dd class="govuk-summary-list__value"><strong class="govuk-tag govuk-tag--red">Refused</strong></dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Decision date</dt>
-                  <dd class="govuk-summary-list__value">6 December 1991</dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Description</dt>
-                  <dd class="govuk-summary-list__value">Erection of a rear roof extension, the installation of 2 velux rooflights on the front pitch and the provision of a rear roof terrace. (Regd. plan Nos.34894/91/0720. Applicant's plan Nos.9115/1)</dd>
-                </div>
-              </dl>
-            </div>
+          <div id="site-history-cards" class="govuk-!-margin-top-4">
+            <!-- Cards rendered dynamically from Supabase -->
           </div>
           <div class="app-review-controls" data-section="site-history">
             <div class="app-review-buttons" role="group" aria-label="Review options for Relevant site history">
@@ -777,7 +528,7 @@
             <div class="app-review-buttons" role="group" aria-label="Review options for Site and surroundings">
               <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
               <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
-              <a href="edit-site-and-surroundings.html" class="govuk-link app-review-link">Edit</a>
+              <a href="/edit-site-and-surroundings.html" class="govuk-link app-review-link">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
               <div class="govuk-form-group">
@@ -856,70 +607,8 @@
             </table>
 
             <h3 class="govuk-heading-m govuk-!-margin-top-6">Detailed assessments</h3>
-
-            <div class="govuk-summary-card">
-              <div class="govuk-summary-card__title-wrapper">
-                <h4 class="govuk-summary-card__title">Land use: Residential extension</h4>
-                <div class="govuk-summary-card__actions">
-                  <strong class="govuk-tag govuk-tag--green">Supported</strong>
-                </div>
-              </div>
-              <div class="govuk-summary-card__content">
-                <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) - Policy P1 (Social rented and intermediate housing)</p>
-                <p class="govuk-body">The proposed works are for the extension and alteration of an existing residential dwelling, which is an acceptable land use in this location. There are no policy concerns regarding the principle of development.</p>
-              </div>
-            </div>
-
-            <div class="govuk-summary-card">
-              <div class="govuk-summary-card__title-wrapper">
-                <h4 class="govuk-summary-card__title">Design and heritage: Rear conservatory design</h4>
-                <div class="govuk-summary-card__actions">
-                  <strong class="govuk-tag govuk-tag--yellow">Needs changes</strong>
-                </div>
-              </div>
-              <div class="govuk-summary-card__content">
-                <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) - Policy P13 (Design of places), Policy P19 (Conservation areas)</p>
-                <p class="govuk-body">The proposed conservatory design is generally acceptable in terms of scale and massing. However, the current proposal includes uPVC frames which are not considered appropriate within the Green Village Conservation Area. The frames should be changed to painted timber or aluminium with a slim profile to preserve the character of the area. Subject to this amendment, the design would be supported.</p>
-              </div>
-            </div>
-
-            <div class="govuk-summary-card">
-              <div class="govuk-summary-card__title-wrapper">
-                <h4 class="govuk-summary-card__title">Design and heritage: Materials</h4>
-                <div class="govuk-summary-card__actions">
-                  <strong class="govuk-tag govuk-tag--green">Supported</strong>
-                </div>
-              </div>
-              <div class="govuk-summary-card__content">
-                <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) - Policy P13 (Design of places), Policy P19 (Conservation areas)</p>
-                <p class="govuk-body">The proposed use of London stock brick for the dwarf walls and natural slate for any solid roof elements is considered appropriate and sympathetic to the existing dwelling and conservation area setting.</p>
-              </div>
-            </div>
-
-            <div class="govuk-summary-card">
-              <div class="govuk-summary-card__title-wrapper">
-                <h4 class="govuk-summary-card__title">Neighbour amenity: Impact on No. 3</h4>
-                <div class="govuk-summary-card__actions">
-                  <strong class="govuk-tag govuk-tag--yellow">Needs changes</strong>
-                </div>
-              </div>
-              <div class="govuk-summary-card__content">
-                <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) - Policy P14 (Residential design)</p>
-                <p class="govuk-body">The proposed conservatory extends 4 metres from the rear elevation. Given the orientation of the site and the existing single-storey extension at No. 3, there is potential for some loss of light to the rear habitable room window of that property. It is recommended that the depth be reduced to 3 metres or that a 45-degree splay be incorporated on the boundary side to mitigate this impact.</p>
-              </div>
-            </div>
-
-            <div class="govuk-summary-card">
-              <div class="govuk-summary-card__title-wrapper">
-                <h4 class="govuk-summary-card__title">Trees: Proximity to TPO oak</h4>
-                <div class="govuk-summary-card__actions">
-                  <strong class="govuk-tag govuk-tag--red">Does not comply</strong>
-                </div>
-              </div>
-              <div class="govuk-summary-card__content">
-                <p class="govuk-body"><strong>Relevant policies:</strong> Southwark Plan (2022) - Policy P60 (Biodiversity), Policy P61 (Trees)</p>
-                <p class="govuk-body">The proposed conservatory footprint encroaches within the root protection area (RPA) of the mature oak tree at No. 3 Desendans Road, which is protected by TPO/2019/0042. The current proposal would require excavation within 6 metres of the trunk, which would cause significant harm to the tree's root system. This element cannot be supported in its current form. The applicant should commission an arboricultural impact assessment and revise the footprint to remain entirely outside the RPA, or demonstrate that construction methods (such as pile foundations) can avoid root damage.</p>
-              </div>
+            <div id="planning-considerations-cards">
+              <!-- Cards rendered dynamically from Supabase -->
             </div>
           </div>
           <div class="app-review-controls" data-section="planning-considerations-and-advice">
@@ -1211,174 +900,24 @@
       </main>
     </div>
 
+    <!-- GOV.UK Frontend JS -->
     <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
     <script type="module">
       import { initAll } from '/javascripts/govuk-frontend.min.js'
       initAll()
     </script>
 
-    <script>
-      (function() {
-        const reviewControls = document.querySelectorAll('.app-review-controls');
-        const totalSections = reviewControls.length;
-        const progressFill = document.getElementById('progress-fill');
-        const progressCount = document.getElementById('progress-count');
-        const progressBar = document.querySelector('.sidebar-progress');
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/components/js/supabase-client.js"></script>
+    <script src="/components/js/review-renderer.js?v=6"></script>
 
-        // SVG icons
-        const notReviewedIcon = '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true"><circle cx="12" cy="12" r="11"/></svg>';
-        const agreedIcon = '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1d70b8"/><path d="M7.5 12l3 3 6-6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-        const returnedIcon = '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#f47738"/><path stroke-linecap="round" stroke-linejoin="round" stroke="#ffffff" stroke-width="2" fill="none" d="M13 16 8 12m0 0 5-4M8 12h9"/></svg>';
+    <!-- Component JS -->
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="/components/js/review-controls.js"></script>
 
-        function updateProgress() {
-          const reviewedCount = document.querySelectorAll('.app-review-controls[data-status]').length;
-          const percentage = (reviewedCount / totalSections) * 100;
-
-          progressFill.style.width = percentage + '%';
-          progressCount.textContent = reviewedCount;
-          progressBar.setAttribute('aria-valuenow', reviewedCount);
-        }
-
-        function getSectionTag(sectionName) {
-          return document.querySelector('[data-section-tag="' + sectionName + '"]');
-        }
-
-        function getSidebarItem(sectionName) {
-          return document.querySelector('.task-list__item[data-section="' + sectionName + '"]');
-        }
-
-        function updateStatus(control, action) {
-          const section = control.dataset.section;
-          const statusEl = getSectionTag(section);
-          const sidebarItem = getSidebarItem(section);
-
-          if (action === 'agree') {
-            control.dataset.status = 'agreed';
-            // Update section tag
-            statusEl.className = 'govuk-tag govuk-tag--green app-review-tag';
-            statusEl.textContent = 'Agreed';
-            // Update sidebar item
-            sidebarItem.className = 'task-list__item task-list__item--agreed';
-            sidebarItem.querySelector('.task-list__status').innerHTML = agreedIcon;
-          } else if (action === 'return') {
-            control.dataset.status = 'returned';
-            // Update section tag
-            statusEl.className = 'govuk-tag govuk-tag--orange app-review-tag';
-            statusEl.textContent = 'Returned for comments';
-            // Update sidebar item
-            sidebarItem.className = 'task-list__item task-list__item--returned';
-            sidebarItem.querySelector('.task-list__status').innerHTML = returnedIcon;
-          }
-        }
-
-        function resetStatus(control) {
-          const section = control.dataset.section;
-          const statusEl = getSectionTag(section);
-          const sidebarItem = getSidebarItem(section);
-
-          control.removeAttribute('data-status');
-          // Reset section tag
-          statusEl.className = 'govuk-tag govuk-tag--grey app-review-tag';
-          statusEl.textContent = 'Not reviewed';
-          // Reset sidebar item
-          sidebarItem.className = 'task-list__item task-list__item--not-reviewed';
-          sidebarItem.querySelector('.task-list__status').innerHTML = notReviewedIcon;
-        }
-
-        reviewControls.forEach(function(control) {
-          const buttons = control.querySelectorAll('.app-review-button');
-          const commentsSection = control.querySelector('.app-review-comments');
-
-          buttons.forEach(function(button) {
-            button.addEventListener('click', function() {
-              const action = this.dataset.action;
-
-              // Handle edit action separately
-              if (action === 'edit') {
-                const section = control.dataset.section;
-                alert('This would open the edit interface for: ' + section);
-                return;
-              }
-
-              // Reset all buttons in this group
-              buttons.forEach(function(btn) {
-                if (btn.dataset.action !== 'edit') {
-                  btn.setAttribute('aria-pressed', 'false');
-                }
-              });
-
-              // Toggle current button
-              const wasPressed = this.getAttribute('aria-pressed') === 'true';
-              if (!wasPressed) {
-                this.setAttribute('aria-pressed', 'true');
-              }
-
-              // Show/hide comments
-              if (action === 'return' && !wasPressed) {
-                commentsSection.removeAttribute('hidden');
-              } else {
-                commentsSection.setAttribute('hidden', '');
-              }
-
-              // Update status (only for agree, return status is set on save comment)
-              if (!wasPressed && action === 'agree') {
-                updateStatus(control, action);
-                updateProgress();
-              } else if (wasPressed) {
-                // If unpressing, reset to not reviewed
-                resetStatus(control);
-                updateProgress();
-              }
-            });
-          });
-        });
-
-        // Save comment buttons
-        document.querySelectorAll('.app-save-comment').forEach(function(button) {
-          button.addEventListener('click', function() {
-            const control = this.closest('.app-review-controls');
-            const commentsSection = control.querySelector('.app-review-comments');
-            const textarea = commentsSection.querySelector('.govuk-textarea');
-            const savedState = this.parentElement.querySelector('.app-review-comments__saved-state');
-
-            // Update status to "Returned for comments"
-            updateStatus(control, 'return');
-            updateProgress();
-
-            // Disable textarea and show saved state
-            textarea.setAttribute('readonly', '');
-            commentsSection.classList.add('app-review-comments--saved');
-            savedState.classList.add('visible');
-          });
-        });
-
-        // Undo comment buttons
-        document.querySelectorAll('.app-undo-comment').forEach(function(link) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const control = this.closest('.app-review-controls');
-            const commentsSection = control.querySelector('.app-review-comments');
-            const textarea = commentsSection.querySelector('.govuk-textarea');
-            const savedState = this.closest('.app-review-comments__saved-state');
-
-            // Re-enable textarea and hide saved state
-            textarea.removeAttribute('readonly');
-            commentsSection.classList.remove('app-review-comments--saved');
-            savedState.classList.remove('visible');
-
-            // Reset status to not reviewed
-            resetStatus(control);
-            updateProgress();
-          });
-        });
-
-        // Submit review button
-        document.getElementById('submit-review').addEventListener('click', function() {
-          alert('Review submitted successfully!');
-        });
-      })();
-    </script>
-
+    <!-- OpenLayers Map -->
     <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
     <script>
       (function() {
@@ -1446,19 +985,40 @@
         });
       })();
     </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.querySelector('.case-summary__toggle');
-        const description = document.getElementById('proposal-description');
 
-        toggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-          toggle.setAttribute('aria-expanded', !isExpanded);
-          description.classList.toggle('is-visible');
-          toggle.textContent = isExpanded ? 'Show proposal description' : 'Hide proposal description';
-        });
-      });
+    <!-- Load data from Supabase -->
+    <script>
+      (function() {
+        function initPage() {
+          // Get URL params (redirect already handled in head script)
+          var urlParams = new URLSearchParams(window.location.search);
+          var reference = urlParams.get('ref') || '23-00527-PRE';
+          var mode = urlParams.get('mode') || 'admin';
+          var user = urlParams.get('user') || null;
+
+          console.log('Init: mode=' + mode + ', user=' + user);
+
+          // Update user name in header
+          var userNameEl = document.getElementById('user-name');
+          if (userNameEl && mode === 'guest' && user) {
+            userNameEl.textContent = user;
+          }
+
+          // Load and render the page
+          if (window.ReviewRenderer) {
+            window.ReviewRenderer.renderPage(reference, mode, user);
+          } else {
+            console.error('Init: ReviewRenderer NOT found!');
+          }
+        }
+
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+          initPage();
+        }
+      })();
     </script>
   </body>
 </html>

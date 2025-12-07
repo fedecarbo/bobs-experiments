@@ -1,0 +1,41 @@
+/**
+ * Main Content CSS
+ * Section headers, content spacing, and common elements
+ */
+
+/* Section header with tag */
+.app-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.app-section-header .govuk-heading-l {
+  margin-bottom: 0;
+}
+
+.app-review-tag {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  width: auto !important;
+  max-width: none;
+}
+
+/* Section content spacing */
+.app-section-content {
+  margin-top: 30px;
+}
+
+/* Details list */
+.app-details-list p {
+  margin-bottom: 5px;
+}
+
+/* Map container */
+.app-map-container {
+  height: 400px;
+  margin-top: 30px;
+  border: 2px solid #0b0c0c;
+}

@@ -99,6 +99,41 @@
       .task-list__item--warning .task-list__status {
         color: #f47738;
       }
+
+      /* Proposal description toggle */
+      .case-summary__toggle {
+        background: none;
+        border: none;
+        color: #1d70b8;
+        font-family: "GDS Transport", arial, sans-serif;
+        font-size: 16px;
+        text-decoration: underline;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 15px;
+      }
+      .case-summary__toggle:hover {
+        color: #003078;
+      }
+      .case-summary__toggle:focus {
+        outline: 3px solid #ffdd00;
+        outline-offset: 0;
+        background-color: #ffdd00;
+        color: #0b0c0c;
+        text-decoration: none;
+      }
+      .case-summary__description {
+        display: none;
+        background-color: #f4f8fb;
+        padding: 15px;
+        border-bottom: 1px solid #8eb8dc;
+      }
+      .case-summary__description.is-visible {
+        display: block;
+      }
+      .case-summary__description p {
+        margin: 0;
+      }
     </style>
   </head>
   <body class="govuk-template__body">
@@ -124,6 +159,10 @@
         <span class="govuk-body govuk-!-font-weight-bold" style="margin: 0;">25-00862-PRE</span>
         <div style="border-left: 2px solid #b1b4b6; height: 20px; margin: 0 15px;"></div>
         <span class="govuk-body" style="margin: 0;">75, MAIN STREET, DONCASTER, DN9 3HW</span>
+        <button class="case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</button>
+      </div>
+      <div class="case-summary__description" id="proposal-description">
+        <p class="govuk-body">Erection of a two-storey rear extension and single-storey side extension, along with associated landscaping works and alterations to the existing boundary treatment.</p>
       </div>
     </div>
 
@@ -262,6 +301,19 @@
     <script type="module">
       import { initAll } from '/javascripts/govuk-frontend.min.js'
       initAll()
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('.case-summary__toggle');
+        const description = document.getElementById('proposal-description');
+
+        toggle.addEventListener('click', function() {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', !isExpanded);
+          description.classList.toggle('is-visible');
+          toggle.textContent = isExpanded ? 'Show proposal description' : 'Hide proposal description';
+        });
+      });
     </script>
   </body>
 </html>
