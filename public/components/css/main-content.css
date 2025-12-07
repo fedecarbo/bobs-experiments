@@ -39,3 +39,31 @@
   margin-top: 30px;
   border: 2px solid #0b0c0c;
 }
+
+/* Planning consideration images */
+.app-consideration-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.app-consideration-image {
+  display: block;
+  width: 160px;
+  height: 120px;
+  overflow: hidden;
+  border: 1px solid #b1b4b6;
+  border-radius: 4px;
+}
+
+.app-consideration-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+
+.app-consideration-image:hover img {
+  opacity: 0.8;
+}

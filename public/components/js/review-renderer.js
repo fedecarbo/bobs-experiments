@@ -328,6 +328,18 @@
         statusText = 'Does not comply';
       }
 
+      // Build images HTML if image_urls exist
+      var imagesHtml = '';
+      if (c.image_urls && c.image_urls.length > 0) {
+        imagesHtml = '<div class="app-consideration-images">' +
+          c.image_urls.map(function(url) {
+            return '<a href="' + escapeHtml(url) + '" class="app-consideration-image" target="_blank">' +
+              '<img src="' + escapeHtml(url) + '" alt="Supporting image" loading="lazy">' +
+            '</a>';
+          }).join('') +
+        '</div>';
+      }
+
       var card = document.createElement('div');
       card.className = 'govuk-summary-card';
       card.innerHTML =
@@ -340,6 +352,7 @@
         '<div class="govuk-summary-card__content">' +
           '<p class="govuk-body"><strong>Relevant policies:</strong> ' + escapeHtml(c.relevant_policies || '') + '</p>' +
           '<p class="govuk-body">' + escapeHtml(c.assessment || '') + '</p>' +
+          imagesHtml +
         '</div>';
 
       cardsContainer.appendChild(card);
