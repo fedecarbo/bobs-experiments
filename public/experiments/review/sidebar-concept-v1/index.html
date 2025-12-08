@@ -75,10 +75,10 @@
       <!-- Sidebar -->
       <aside class="sidebar">
         <!-- Progress bar -->
-        <div class="sidebar-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="14" aria-label="Review progress">
+        <div class="sidebar-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="12" aria-label="Review progress">
           <div class="sidebar-progress__label">
             <span class="govuk-body-s govuk-!-margin-bottom-0">Review progress</span>
-            <span class="govuk-body-s govuk-!-margin-bottom-0"><strong id="progress-count">0</strong> of <strong>14</strong></span>
+            <span class="govuk-body-s govuk-!-margin-bottom-0"><strong id="progress-count">0</strong> of <strong>12</strong></span>
           </div>
           <div class="sidebar-progress__bar">
             <div class="sidebar-progress__fill" id="progress-fill"></div>
@@ -209,21 +209,23 @@
                 <span class="task-list__name">Requirements</span>
               </a>
             </li>
-            <li class="task-list__item task-list__item--not-reviewed" data-section="next-steps">
+            <li class="task-list__item task-list__item--no-review" data-section="next-steps">
               <a href="#next-steps" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
-                  <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
-                    <circle cx="12" cy="12" r="11"/>
+                  <svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="11" fill="#b1b4b6"/>
+                    <path d="M7.5 12l3 3 6-6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
                 <span class="task-list__name">Next steps</span>
               </a>
             </li>
-            <li class="task-list__item task-list__item--not-reviewed" data-section="disclaimer">
+            <li class="task-list__item task-list__item--no-review" data-section="disclaimer">
               <a href="#disclaimer" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
-                  <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
-                    <circle cx="12" cy="12" r="11"/>
+                  <svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="11" fill="#b1b4b6"/>
+                    <path d="M7.5 12l3 3 6-6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
                 <span class="task-list__name">Disclaimer</span>
@@ -521,14 +523,16 @@
             <h2 class="govuk-heading-l">Site and surroundings</h2>
             <strong class="govuk-tag govuk-tag--grey app-review-tag" data-section-tag="site-and-surroundings">Not reviewed</strong>
           </div>
-          <p class="govuk-body app-section-content">The application site comprises a two-storey Victorian mid-terrace dwelling constructed of yellow London stock brick with a slate roof and original timber sash windows to the front elevation. The rear garden extends approximately 12 metres and is enclosed by timber fencing to the side boundaries. The property is flanked by similar two-storey Victorian terraced dwellings at Nos. 1 and 3 Desendans Road, with No. 3 having an existing single-storey rear extension. To the rear, the site backs onto the gardens of properties fronting Elmwood Avenue.</p>
-          <p class="govuk-body">The site is located within the Green Village Conservation Area. A mature oak tree subject to a Tree Preservation Order (TPO/2019/0042) stands in the rear garden of No. 3, with its canopy extending partially over the application site. The property also falls within the buffer zone of Southwark Woods Site of Special Scientific Interest (SSSI), located approximately 150 metres to the east.</p>
-          <p class="govuk-body">The surrounding area is predominantly residential in character, comprising Victorian and Edwardian terraced housing. Desendans Road is an unclassified road within a 20mph zone. Local amenities including shops and a primary school are situated on Green Village High Street, approximately 200 metres to the north, and the area benefits from good public transport links with Green Village Station within a 5-minute walk.</p>
+          <div id="site-and-surroundings-content" class="app-section-content">
+            <p class="govuk-body">The application site comprises a two-storey Victorian mid-terrace dwelling constructed of yellow London stock brick with a slate roof and original timber sash windows to the front elevation. The rear garden extends approximately 12 metres and is enclosed by timber fencing to the side boundaries. The property is flanked by similar two-storey Victorian terraced dwellings at Nos. 1 and 3 Desendans Road, with No. 3 having an existing single-storey rear extension. To the rear, the site backs onto the gardens of properties fronting Elmwood Avenue.</p>
+            <p class="govuk-body">The site is located within the Green Village Conservation Area. A mature oak tree subject to a Tree Preservation Order (TPO/2019/0042) stands in the rear garden of No. 3, with its canopy extending partially over the application site. The property also falls within the buffer zone of Southwark Woods Site of Special Scientific Interest (SSSI), located approximately 150 metres to the east.</p>
+            <p class="govuk-body">The surrounding area is predominantly residential in character, comprising Victorian and Edwardian terraced housing. Desendans Road is an unclassified road within a 20mph zone. Local amenities including shops and a primary school are situated on Green Village High Street, approximately 200 metres to the north, and the area benefits from good public transport links with Green Village Station within a 5-minute walk.</p>
+          </div>
           <div class="app-review-controls" data-section="site-and-surroundings">
             <div class="app-review-buttons" role="group" aria-label="Review options for Site and surroundings">
               <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
               <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
-              <a href="/edit-site-and-surroundings.html" class="govuk-link app-review-link">Edit</a>
+              <a href="./edit-site-and-surroundings.html" class="govuk-link app-review-link">Edit</a>
             </div>
             <div class="app-review-comments" hidden>
               <div class="govuk-form-group">
@@ -830,11 +834,11 @@
             </div>
           </div>
 
-          <!-- Section 13: Next Steps -->
+          <!-- Section 13: Next Steps (No review needed) -->
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible" id="next-steps">
           <div class="app-section-header govuk-!-margin-top-6">
             <h2 class="govuk-heading-l">Next steps</h2>
-            <strong class="govuk-tag govuk-tag--grey app-review-tag" data-section-tag="next-steps">Not reviewed</strong>
+            <strong class="govuk-tag govuk-tag--grey">No review needed</strong>
           </div>
           <p class="govuk-body app-section-content">If you wish to submit an application, follow these clear steps to submit your formal application:</p>
           <ol class="govuk-list govuk-list--number">
@@ -843,52 +847,14 @@
             <li>Apply online for the <strong>householder planning permission</strong> using the <a href="https://www.planningportal.co.uk/" class="govuk-link">Planning Portal</a>.</li>
           </ol>
           <p class="govuk-body">The Planning Portal makes it easy to find the right fee and provide the right information. For further information on applying for householder planning permission, visit the <a href="https://www.southwark.gov.uk/planning-and-building-control/planning-applications" class="govuk-link">Southwark Council planning website</a>.</p>
-          <div class="app-review-controls" data-section="next-steps">
-            <div class="app-review-buttons" role="group" aria-label="Review options for Next Steps">
-              <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
-              <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
-              <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
-            </div>
-            <div class="app-review-comments" hidden>
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="comments-next-steps">Comments for officer</label>
-                <textarea class="govuk-textarea" id="comments-next-steps" name="comments-next-steps" rows="5"></textarea>
-              </div>
-              <div class="app-review-comments__actions">
-                <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
-                <p class="govuk-body app-review-comments__saved-state">
-                  Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <!-- Section 14: Disclaimer -->
+          <!-- Section 14: Disclaimer (No review needed) -->
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible" id="disclaimer">
           <div class="app-section-header govuk-!-margin-top-6">
             <h2 class="govuk-heading-l">Disclaimer</h2>
-            <strong class="govuk-tag govuk-tag--grey app-review-tag" data-section-tag="disclaimer">Not reviewed</strong>
+            <strong class="govuk-tag govuk-tag--grey">No review needed</strong>
           </div>
           <p class="govuk-body app-section-content">Please note that this pre-application advice follows initial officer assessment of the information you have provided. Every formal application is subject to a statutory assessment process and it is only then that a full assessment of all the material planning considerations can be made in the context of relevant development plan policies. Some important considerations may only arise or become apparent during this formal process which includes consultation with residents and other third parties affected by the development. This officer advice is therefore given for your general guidance in the preparation of a future planning application or proposal. The advice does not prejudice the Council's consideration or decision on any future application that may be submitted.</p>
-          <div class="app-review-controls" data-section="disclaimer">
-            <div class="app-review-buttons" role="group" aria-label="Review options for Disclaimer">
-              <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
-              <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
-              <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
-            </div>
-            <div class="app-review-comments" hidden>
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="comments-disclaimer">Comments for officer</label>
-                <textarea class="govuk-textarea" id="comments-disclaimer" name="comments-disclaimer" rows="5"></textarea>
-              </div>
-              <div class="app-review-comments__actions">
-                <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
-                <p class="govuk-body app-review-comments__saved-state">
-                  Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
-                </p>
-              </div>
-            </div>
-          </div>
 
           <div class="govuk-!-margin-top-6">
             <button type="submit" class="govuk-button" data-module="govuk-button" id="submit-review">
@@ -914,6 +880,7 @@
 
     <!-- Component JS -->
     <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
     <script src="/components/js/sidebar.js"></script>
     <script src="/components/js/review-controls.js"></script>
 
@@ -1009,6 +976,16 @@
             window.ReviewRenderer.renderPage(reference, mode, user);
           } else {
             console.error('Init: ReviewRenderer NOT found!');
+          }
+
+          // Scroll to anchor if present (after content is loaded)
+          if (window.location.hash) {
+            setTimeout(function() {
+              var target = document.querySelector(window.location.hash);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 100);
           }
         }
 

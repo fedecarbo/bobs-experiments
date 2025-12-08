@@ -248,32 +248,19 @@
   function renderSiteDescription(report) {
     if (!report.site_description) return;
 
-    var reviewControls = document.querySelector('.app-review-controls[data-section="site-and-surroundings"]');
-    if (!reviewControls) return;
+    // Find the content container
+    var contentContainer = document.getElementById('site-and-surroundings-content');
+    if (!contentContainer) return;
 
-    var parent = reviewControls.parentNode;
+    // Clear existing content and add new paragraphs
+    contentContainer.innerHTML = '';
 
-    // Remove existing paragraphs for this section
-    var toRemove = [];
-    var sibling = document.querySelector('#site-and-surroundings');
-    if (sibling) sibling = sibling.nextElementSibling; // skip to section header
-    if (sibling) sibling = sibling.nextElementSibling; // skip section header
-
-    while (sibling && sibling !== reviewControls) {
-      if (sibling.tagName === 'P' && sibling.classList.contains('govuk-body')) {
-        toRemove.push(sibling);
-      }
-      sibling = sibling.nextElementSibling;
-    }
-    toRemove.forEach(function(el) { el.remove(); });
-
-    // Split into paragraphs and add
     var paragraphs = report.site_description.split('\n\n');
-    paragraphs.forEach(function(text, i) {
+    paragraphs.forEach(function(text) {
       var p = document.createElement('p');
-      p.className = 'govuk-body' + (i === 0 ? ' app-section-content' : '');
+      p.className = 'govuk-body';
       p.textContent = text;
-      parent.insertBefore(p, reviewControls);
+      contentContainer.appendChild(p);
     });
   }
 
@@ -587,7 +574,8 @@
       renderRequirements(currentReport.requirements);
 
       // Restore review states based on mode
-      var totalSections = currentReport.report_sections ? currentReport.report_sections.length : 0;
+      // Count only sections that have review controls (excludes "no review needed" sections)
+      var totalSections = document.querySelectorAll('.app-review-controls').length;
 
       if (currentMode === 'guest' && currentUser) {
         // Load guest-specific review states

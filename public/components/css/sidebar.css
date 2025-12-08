@@ -77,19 +77,6 @@
   height: 24px;
 }
 
-/* Status variants */
-.task-list__item--not-reviewed .task-list__status {
-  color: #b1b4b6;
-}
-
-.task-list__item--agreed .task-list__status {
-  color: #00703c;
-}
-
-.task-list__item--returned .task-list__status {
-  color: #f47738;
-}
-
 /* Current page highlight (for multi-page navigation) */
 .task-list__item--current {
   background-color: #ffffff;
@@ -101,4 +88,9 @@
 
 .task-list__item--current .task-list__link {
   /* Normal weight when selected */
+}
+
+/* No review needed state - keep link colour so it's clearly clickable */
+.task-list__item--no-review {
+  /* Icon indicates status, text remains standard link colour */
 }
