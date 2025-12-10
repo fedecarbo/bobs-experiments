@@ -40,6 +40,129 @@ Import only what's needed:
 
 ---
 
+# Supabase Integration
+
+## Database Setup
+
+- **URL**: Configured in `/components/js/supabase-client.js`
+- **Client**: Supabase JS v2 loaded from CDN
+
+## Key Tables
+
+- `applications` - Main application data (reference, address, proposal_description)
+- `reports` - Report content (site_description, outcome, summary_of_advice, etc.)
+- `report_sections` - Review status per section (for admin users)
+- `review_sessions` - Guest reviewer states (per-user, auto-cleanup after 24hrs)
+- `planning_considerations`, `requirements`, `relevant_policies`, `site_constraints`, `site_history`
+
+## Data Flow
+
+Review page loads data via `ReviewRenderer.renderPage()` which calls `SupabaseClient.loadApplication()`.
+The `reportId` is stored in `ReviewRenderer` and accessed via `ReviewRenderer.getReportId()`.
+
+## Creating Edit Pages for Report Sections
+
+When adding a new edit page for a report section (like Site and surroundings):
+
+### 1. Add Supabase functions to supabase-client.js
+
+```javascript
+// Load function
+async function loadFieldName(reportId) {
+  var { data, error } = await client
+    .from('reports')
+    .select('field_name')
+    .eq('id', reportId)
+    .single();
+  return data ? data.field_name : null;
+}
+
+// Update function
+async function updateFieldName(reportId, content) {
+  var { data, error } = await client
+    .from('reports')
+    .update({ field_name: content })
+    .eq('id', reportId)
+    .select();
+  return data && data.length > 0;
+}
+```
+
+Don't forget to export in `window.SupabaseClient = { ... }`.
+
+### 2. Create edit page HTML
+
+Import Supabase before other component JS:
+```html
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/components/js/supabase-client.js"></script>
+```
+
+### 3. Edit page JavaScript pattern
+
+```javascript
+document.addEventListener('DOMContentLoaded', async function() {
+  var textarea = document.getElementById('field-name');
+  var saveButton = document.getElementById('save-button');
+  var queryString = window.location.search;
+  var urlParams = new URLSearchParams(queryString);
+  var reportId = urlParams.get('reportId');
+
+  // Load content from Supabase
+  if (reportId && window.SupabaseClient) {
+    var content = await window.SupabaseClient.loadFieldName(reportId);
+    if (content) {
+      textarea.value = content;
+    }
+  }
+
+  // Save button handler
+  saveButton.addEventListener('click', async function() {
+    if (reportId && window.SupabaseClient) {
+      var success = await window.SupabaseClient.updateFieldName(reportId, textarea.value);
+      if (!success) {
+        alert('Error saving changes. Please try again.');
+        return;
+      }
+    }
+    window.location.href = 'index.html' + queryString + '#section-anchor';
+  });
+});
+```
+
+### 4. Edit link handling (IMPORTANT)
+
+Edit links get `reportId` dynamically on click (not on page load) because data loads asynchronously.
+This is handled in `review-controls.js` via click handler on `.app-review-link` elements.
+
+The link will navigate to: `edit-page.html?mode=admin&reportId=xxxxx`
+
+### 5. Review page renderer
+
+In `review-renderer.js`, create a render function that:
+1. Finds the content container by ID
+2. Clears existing content: `container.innerHTML = ''`
+3. Adds new content from database
+
+```javascript
+function renderFieldName(report) {
+  if (!report.field_name) return;
+  var container = document.getElementById('field-name-content');
+  if (!container) return;
+  container.innerHTML = '';
+  // Add paragraphs from report.field_name
+}
+```
+
+### 6. RLS Policies
+
+Ensure your Supabase table has Row Level Security policies that allow:
+- SELECT for anon role (reading)
+- UPDATE for anon role (writing) - or use authenticated role if auth is implemented
+
+---
+
 # GOV.UK Design System - Project Reference
 
 ## Current Setup

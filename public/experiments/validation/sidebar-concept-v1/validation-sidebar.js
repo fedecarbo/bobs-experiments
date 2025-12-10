@@ -1,9 +1,17 @@
 /**
  * Validation Sidebar Component
  * Renders the sidebar from a single source of truth
+ *
+ * Requires: status-icons.js to be loaded first
  */
 (function() {
   'use strict';
+
+  // Map Validation workflow terminology to base icons
+  var statusToIcon = {
+    'not-started': 'empty',
+    'completed': 'complete'
+  };
 
   var ValidationSidebar = {
     // Task groups configuration - edit this to change sidebar structure
@@ -11,20 +19,36 @@
       {
         name: 'Documents',
         tasks: [
-          { id: 'process-documents', name: 'Process submitted documents', href: 'process-documents.html' },
+          { id: 'review-documents', name: 'Review documents', href: 'review-documents.html' },
           { id: 'check-documents', name: 'Check and request documents', href: 'check-documents.html' }
         ]
       },
       {
-        name: 'Other',
+        name: 'Check application details',
         tasks: [
-          { id: 'application-type', name: 'Application type', href: 'application-type.html' },
-          { id: 'site-address', name: 'Site address', href: 'site-address.html' },
-          { id: 'description', name: 'Description of proposal', href: 'description.html' },
-          { id: 'site-constraints', name: 'Site constraints', href: 'site-constraints.html' },
-          { id: 'applicant-agent', name: 'Applicant and agent', href: 'applicant-agent.html' },
-          { id: 'fee', name: 'Fee', href: 'fee.html' },
-          { id: 'validation-decision', name: 'Validation decision', href: 'validation-decision.html' }
+          { id: 'check-red-line-boundary', name: 'Check red line boundary', href: 'check-red-line-boundary.html' },
+          { id: 'check-constraints', name: 'Check constraints', href: 'check-constraints.html' },
+          { id: 'description', name: 'Check description', href: 'description.html' },
+          { id: 'add-reporting-details', name: 'Add reporting details', href: 'add-reporting-details.html' }
+        ]
+      },
+      {
+        name: 'Confirm application requirements',
+        tasks: [
+          { id: 'fee', name: 'Check fee', href: 'fee.html' }
+        ]
+      },
+      {
+        name: 'Other validation issues',
+        tasks: [
+          { id: 'add-validation-request', name: 'Add another validation request', href: 'add-validation-request.html' }
+        ]
+      },
+      {
+        name: 'Review',
+        tasks: [
+          { id: 'review-validation-requests', name: 'Review validation requests', href: 'review-validation-requests.html' },
+          { id: 'send-validation-decision', name: 'Send validation decision', href: 'send-validation-decision.html' }
         ]
       }
     ],
@@ -52,21 +76,22 @@
 
     /**
      * Render the status icon SVG
+     * @param {string} status - Status: 'not-started' or 'completed'
      */
-    renderStatusIcon: function() {
-      return '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">' +
-        '<circle cx="12" cy="12" r="11"/>' +
-      '</svg>';
+    renderStatusIcon: function(status) {
+      var iconName = statusToIcon[status] || 'empty';
+      return window.StatusIcons.get(iconName);
     },
 
     /**
      * Render a single task item
      */
     renderTaskItem: function(task, isCurrent) {
-      var statusClass = 'task-list__item--not-started';
+      var status = task.status || 'not-started';
+      var statusClass = 'task-list__item--' + status;
       var linkContent =
         '<span class="task-list__status" aria-hidden="true">' +
-          this.renderStatusIcon() +
+          this.renderStatusIcon(status) +
         '</span>' +
         '<span class="task-list__name">' + task.name + '</span>';
 
@@ -128,10 +153,9 @@
       var self = this;
       var currentSection = this.getCurrentSection();
 
-      var html = '<nav class="task-list" aria-label="Validation tasks">' +
+      var html = '<nav class="task-list" aria-label="Check the application">' +
         '<div class="task-list__header">' +
-          '<h2 class="govuk-heading-s task-list__heading">Validation tasks</h2>' +
-          '<a href="#" class="govuk-link task-list__reset" id="reset-demo">Reset</a>' +
+          '<h2 class="govuk-heading-s task-list__heading">Check the application</h2>' +
         '</div>';
 
       this.taskGroups.forEach(function(group) {
@@ -146,7 +170,7 @@
      * Render the complete sidebar
      */
     render: function() {
-      return this.renderProgressBar() + this.renderTaskList();
+      return this.renderTaskList();
     },
 
     /**

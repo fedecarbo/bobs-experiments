@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Check red line boundary - Validation - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <!-- GOV.UK Frontend -->
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+
+    <!-- OpenLayers for map -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
+
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+
+    <!-- Validation-specific styles -->
+    <link rel="stylesheet" href="validation.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Alex Morgan</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Case Summary -->
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">24-00142-HAPP</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">45 Elmwood Avenue, Southwark, SE15 4RT</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Erection of a single storey rear extension and associated internal alterations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Layout -->
+    <div class="page-layout">
+      <!-- Sidebar - rendered by validation-sidebar.js -->
+      <aside class="sidebar"></aside>
+
+      <!-- Main Content -->
+      <main class="main-content" id="main-content" role="main" tabindex="-1">
+        <div class="main-content-wrapper">
+          <a href="index.html" class="govuk-back-link">Back to validation tasks</a>
+
+          <h1 class="govuk-heading-xl">Check red line boundary</h1>
+
+          <p class="govuk-body page-description">Check the red line boundary accurately shows the application site. You can draw or edit the boundary if needed.</p>
+
+          <div class="page-status">
+            <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+          </div>
+
+          <!-- Map with red line boundary -->
+          <div id="site-map-container" class="app-map-container govuk-!-margin-bottom-6"></div>
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                How to draw or edit the boundary
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Click on the map to start drawing the boundary</li>
+                <li>Click to add each corner point</li>
+                <li>Double-click to complete the shape</li>
+                <li>Drag existing points to edit the boundary</li>
+              </ul>
+            </div>
+          </details>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <form>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">Is the red line boundary correct?</h2>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="boundary-correct" name="boundary" type="radio" value="correct">
+                    <label class="govuk-label govuk-radios__label" for="boundary-correct">
+                      Yes, the boundary is correct
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="boundary-edited" name="boundary" type="radio" value="edited">
+                    <label class="govuk-label govuk-radios__label" for="boundary-edited">
+                      I have edited the boundary
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="boundary-invalid" name="boundary" type="radio" value="invalid" data-aria-controls="conditional-boundary-invalid">
+                    <label class="govuk-label govuk-radios__label" for="boundary-invalid">
+                      The boundary cannot be validated
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-boundary-invalid">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="boundary-reason">
+                        Why can't the boundary be validated?
+                      </label>
+                      <textarea class="govuk-textarea" id="boundary-reason" name="boundary-reason" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="validation-actions">
+              <button type="submit" class="govuk-button" data-module="govuk-button" data-action="complete">
+                Save and mark as complete
+              </button>
+              <a href="index.html" class="govuk-link">Save and come back later</a>
+            </div>
+          </form>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- GOV.UK Frontend JS -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <!-- Component JS -->
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="validation-sidebar.js"></script>
+    <script src="validation-controls.js"></script>
+    <script src="content-loader.js"></script>
+
+    <!-- OpenLayers Map -->
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+    <script>
+      (function() {
+        // GeoJSON data for site boundary
+        const geojsonData = {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "coordinates": [
+                  [
+                    [-0.10156751758287896, 51.50301385891774],
+                    [-0.10155166978705665, 51.50292819055011],
+                    [-0.10158836994753528, 51.50292455613095],
+                    [-0.10158002900166707, 51.50288821192339],
+                    [-0.10141571237113567, 51.5029037880158],
+                    [-0.10143739883056924, 51.50302112774153],
+                    [-0.10156751758287896, 51.50301385891774]
+                  ]
+                ],
+                "type": "Polygon"
+              }
+            }
+          ]
+        };
+
+        // Style for the boundary (red outline)
+        const boundaryStyle = new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: '#d4351c',
+            width: 3
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(212, 53, 28, 0.1)'
+          })
+        });
+
+        // Create vector source from GeoJSON
+        const vectorSource = new ol.source.Vector({
+          features: new ol.format.GeoJSON().readFeatures(geojsonData, {
+            featureProjection: 'EPSG:3857'
+          })
+        });
+
+        // Apply style to all features
+        vectorSource.getFeatures().forEach(function(feature) {
+          feature.setStyle(boundaryStyle);
+        });
+
+        // Vector layer for the boundaries
+        const vectorLayer = new ol.layer.Vector({
+          source: vectorSource
+        });
+
+        // Create the map with OSM tiles
+        const map = new ol.Map({
+          target: 'site-map-container',
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            }),
+            vectorLayer
+          ],
+          view: new ol.View({
+            center: ol.proj.fromLonLat([-0.0995, 51.506]),
+            zoom: 15
+          }),
+          controls: ol.control.defaults.defaults().extend([
+            new ol.control.ScaleLine()
+          ])
+        });
+
+        // Fit the map to show the boundary zoomed in
+        map.getView().fit(vectorSource.getExtent(), {
+          padding: [50, 50, 50, 50],
+          maxZoom: 19
+        });
+      })();
+    </script>
+  </body>
+</html>

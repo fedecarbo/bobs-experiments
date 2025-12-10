@@ -181,6 +181,70 @@
   }
 
   // ============================================
+  // REPORT CONTENT FUNCTIONS
+  // ============================================
+
+  /**
+   * Load site description from report
+   * @param {string} reportId - Report UUID
+   * @returns {Promise<string|null>}
+   */
+  async function loadSiteDescription(reportId) {
+    var client = getClient();
+    if (!client) return null;
+
+    var { data, error } = await client
+      .from('reports')
+      .select('site_description')
+      .eq('id', reportId)
+      .single();
+
+    if (error) {
+      console.error('Error loading site description:', error);
+      return null;
+    }
+
+    return data ? data.site_description : null;
+  }
+
+  /**
+   * Update site description in report
+   * @param {string} reportId - Report UUID
+   * @param {string} content - New site description content
+   * @returns {Promise<boolean>}
+   */
+  async function updateSiteDescription(reportId, content) {
+    var client = getClient();
+    if (!client) {
+      console.error('Supabase client not initialized');
+      return false;
+    }
+
+    console.log('Updating site description for report:', reportId);
+    console.log('Content length:', content ? content.length : 0);
+
+    var { data, error } = await client
+      .from('reports')
+      .update({ site_description: content })
+      .eq('id', reportId)
+      .select();
+
+    if (error) {
+      console.error('Error updating site description:', error);
+      return false;
+    }
+
+    console.log('Update response:', data);
+    if (!data || data.length === 0) {
+      console.warn('No rows updated - check if reportId exists and RLS policies allow updates');
+      return false;
+    }
+
+    console.log('Site description updated successfully');
+    return true;
+  }
+
+  // ============================================
   // GUEST SESSION FUNCTIONS
   // ============================================
 
@@ -309,6 +373,9 @@
     updateSectionReview: updateSectionReview,
     resetSectionReview: resetSectionReview,
     getReviewProgress: getReviewProgress,
+    // Report content functions
+    loadSiteDescription: loadSiteDescription,
+    updateSiteDescription: updateSiteDescription,
     // Guest functions
     loadGuestReviews: loadGuestReviews,
     updateGuestReview: updateGuestReview,

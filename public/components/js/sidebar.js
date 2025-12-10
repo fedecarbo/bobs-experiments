@@ -1,16 +1,19 @@
 /**
  * Sidebar JS
  * Progress bar updates and current page highlighting
+ *
+ * Requires: status-icons.js to be loaded first
  */
 
 (function() {
   'use strict';
 
-  // SVG icons for status indicators
+  // Map Review workflow terminology to base icons
+  // Uses StatusIcons component for actual SVG strings
   var icons = {
-    notReviewed: '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true"><circle cx="12" cy="12" r="11"/></svg>',
-    agreed: '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1d70b8"/><path d="M7.5 12l3 3 6-6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    returned: '<svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#f47738"/><path stroke-linecap="round" stroke-linejoin="round" stroke="#ffffff" stroke-width="2" fill="none" d="M13 16 8 12m0 0 5-4M8 12h9"/></svg>'
+    notReviewed: function() { return window.StatusIcons.get('empty'); },
+    agreed: function() { return window.StatusIcons.get('complete'); },
+    returned: function() { return window.StatusIcons.get('warning'); }
   };
 
   /**
@@ -56,13 +59,13 @@
     var statusEl = item.querySelector('.task-list__status');
     if (status === 'agreed') {
       item.classList.add('task-list__item--agreed');
-      statusEl.innerHTML = icons.agreed;
+      statusEl.innerHTML = icons.agreed();
     } else if (status === 'returned') {
       item.classList.add('task-list__item--returned');
-      statusEl.innerHTML = icons.returned;
+      statusEl.innerHTML = icons.returned();
     } else {
       item.classList.add('task-list__item--not-reviewed');
-      statusEl.innerHTML = icons.notReviewed;
+      statusEl.innerHTML = icons.notReviewed();
     }
   }
 

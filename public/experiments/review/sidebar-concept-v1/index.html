@@ -99,11 +99,12 @@
                 <span class="task-list__name">Pre-application outcome</span>
               </a>
             </li>
-            <li class="task-list__item task-list__item--not-reviewed" data-section="officer-contact-details">
+            <li class="task-list__item task-list__item--no-review" data-section="officer-contact-details">
               <a href="#officer-contact-details" class="task-list__link govuk-service-navigation__link">
                 <span class="task-list__status" aria-hidden="true">
-                  <svg class="task-list__status-icon task-list__status-icon--not-reviewed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bbd4ea" aria-hidden="true">
-                    <circle cx="12" cy="12" r="11"/>
+                  <svg class="task-list__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="11" fill="#b1b4b6"/>
+                    <path d="M7.5 12l3 3 6-6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
                 <span class="task-list__name">Officer contact details</span>
@@ -291,11 +292,11 @@
             </div>
           </div>
 
-          <!-- Section 2: Officer contact details -->
+          <!-- Section 2: Officer contact details (No review needed) -->
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible" id="officer-contact-details">
           <div class="app-section-header govuk-!-margin-top-6">
             <h2 class="govuk-heading-l">Officer contact details</h2>
-            <strong class="govuk-tag govuk-tag--grey app-review-tag" data-section-tag="officer-contact-details">Not reviewed</strong>
+            <strong class="govuk-tag govuk-tag--grey">No review needed</strong>
           </div>
           <dl class="govuk-summary-list app-section-content">
             <div class="govuk-summary-list__row">
@@ -307,25 +308,6 @@
               <dd class="govuk-summary-list__value"><a href="mailto:planning.applications@southwark.gov.uk" class="govuk-link">planning.applications@southwark.gov.uk</a></dd>
             </div>
           </dl>
-          <div class="app-review-controls" data-section="officer-contact-details">
-            <div class="app-review-buttons" role="group" aria-label="Review options for Officer contact details">
-              <button type="button" class="app-review-button app-review-button--toggle" data-action="agree" aria-pressed="false">Agree</button>
-              <button type="button" class="app-review-button app-review-button--toggle" data-action="return" aria-pressed="false">Return with comments</button>
-              <a href="#" class="govuk-link app-review-link" data-action="edit">Edit</a>
-            </div>
-            <div class="app-review-comments" hidden>
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="comments-officer-contact-details">Comments for officer</label>
-                <textarea class="govuk-textarea" id="comments-officer-contact-details" name="comments-officer-contact-details" rows="5"></textarea>
-              </div>
-              <div class="app-review-comments__actions">
-                <button type="button" class="govuk-button govuk-button--secondary app-save-comment" data-module="govuk-button">Save comment</button>
-                <p class="govuk-body app-review-comments__saved-state">
-                  Comment saved. <a href="#" class="govuk-link app-undo-comment">Undo</a>
-                </p>
-              </div>
-            </div>
-          </div>
 
           <!-- Section 3: Your pre-application details -->
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible" id="your-pre-application-details">

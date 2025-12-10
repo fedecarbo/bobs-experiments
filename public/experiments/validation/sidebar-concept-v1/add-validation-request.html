@@ -2,7 +2,7 @@
 <html lang="en" class="govuk-template">
   <head>
     <meta charset="utf-8">
-    <title>Site address - Validation - BOPS Experiments</title>
+    <title>Add another validation request - Validation - BOPS Experiments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
 
@@ -67,80 +67,73 @@
         <div class="main-content-wrapper">
           <a href="index.html" class="govuk-back-link">Back to validation tasks</a>
 
-          <h1 class="govuk-heading-xl">Site address</h1>
+          <h1 class="govuk-heading-xl">Add another validation request</h1>
 
-          <p class="govuk-body page-description">Check the site address is correct and matches the site boundary shown on the map.</p>
+          <p class="govuk-body page-description">Request additional information from the applicant or agent.</p>
 
           <div class="page-status">
             <strong class="govuk-tag govuk-tag--grey">Not started</strong>
           </div>
 
-          <h2 class="govuk-heading-m">What the applicant submitted</h2>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Address line 1</dt>
-              <dd class="govuk-summary-list__value">45 Elmwood Avenue</dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Town or city</dt>
-              <dd class="govuk-summary-list__value">Southwark</dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Postcode</dt>
-              <dd class="govuk-summary-list__value">SE15 4RT</dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">UPRN</dt>
-              <dd class="govuk-summary-list__value">100023456789</dd>
-            </div>
-          </dl>
-
-          <h2 class="govuk-heading-m">Site boundary</h2>
-          <div class="app-map-container" style="height: 300px; background: #f3f2f1; display: flex; align-items: center; justify-content: center; border: 2px solid #b1b4b6;">
-            <p class="govuk-body govuk-!-margin-0">Map placeholder - site boundary would display here</p>
-          </div>
-
-          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
           <form>
             <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                  <h2 class="govuk-fieldset__heading">Is the site address correct?</h2>
-                </legend>
-                <div class="govuk-radios" data-module="govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="address-correct" name="address" type="radio" value="correct">
-                    <label class="govuk-label govuk-radios__label" for="address-correct">
-                      Yes, it's correct
+              <label class="govuk-label govuk-label--m" for="request-category">
+                What type of request is this?
+              </label>
+              <select class="govuk-select" id="request-category" name="request-category">
+                <option value="">Select a category</option>
+                <option value="documents">Missing documents</option>
+                <option value="information">Additional information needed</option>
+                <option value="fee">Fee issue</option>
+                <option value="boundary">Red line boundary issue</option>
+                <option value="description">Description clarification</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="request-details">
+                Details of the request
+              </label>
+              <div class="govuk-hint">
+                Explain what is needed and why. This will be sent to the applicant or agent.
+              </div>
+              <textarea class="govuk-textarea" id="request-details" name="request-details" rows="8"></textarea>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="response-deadline">
+                Response deadline (optional)
+              </label>
+              <div class="govuk-hint">
+                Set a date by which the applicant should respond
+              </div>
+              <div class="govuk-date-input" id="response-deadline">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="deadline-day">
+                      Day
                     </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="address-wrong" name="address" type="radio" value="wrong" data-aria-controls="conditional-address-wrong">
-                    <label class="govuk-label govuk-radios__label" for="address-wrong">
-                      No, I need to update it
-                    </label>
-                  </div>
-                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-address-wrong">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="address-line-1">Address line 1</label>
-                      <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" value="45 Elmwood Avenue">
-                    </div>
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="address-line-2">Address line 2 (optional)</label>
-                      <input class="govuk-input" id="address-line-2" name="address-line-2" type="text">
-                    </div>
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="town">Town or city</label>
-                      <input class="govuk-input govuk-!-width-two-thirds" id="town" name="town" type="text" value="Southwark">
-                    </div>
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="postcode">Postcode</label>
-                      <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="SE15 4RT">
-                    </div>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deadline-day" name="deadline-day" type="text" inputmode="numeric">
                   </div>
                 </div>
-              </fieldset>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="deadline-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deadline-month" name="deadline-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="deadline-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="deadline-year" name="deadline-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="validation-actions">
@@ -164,6 +157,7 @@
 
     <!-- Component JS -->
     <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
     <script src="/components/js/sidebar.js"></script>
     <script src="validation-sidebar.js"></script>
     <script src="validation-controls.js"></script>

@@ -39,17 +39,6 @@
   padding-bottom: 0;
 }
 
-/* Task status icons for validation workflow - match Review sidebar style */
-.task-list__item--not-started .task-list__status-icon circle {
-  fill: #bbd4ea;
-  stroke: none;
-}
-
-.task-list__item--completed .task-list__status-icon circle {
-  fill: #1d70b8;
-  stroke: none;
-}
-
 /* Current page - black text, not a link, no background change */
 .task-list__item--current {
   background-color: transparent;

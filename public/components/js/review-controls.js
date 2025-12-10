@@ -259,6 +259,32 @@
         alert('Review submitted successfully!');
       });
     }
+
+    // Handle Edit links - add reportId dynamically on click
+    // (reportId isn't available until after async data load)
+    document.querySelectorAll('.app-review-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var href = this.getAttribute('href');
+        if (!href) return;
+
+        // Get current query params and add reportId
+        var queryString = window.location.search;
+        var params = new URLSearchParams(queryString);
+
+        // Get reportId from ReviewRenderer (available after data loads)
+        var reportId = window.ReviewRenderer ? window.ReviewRenderer.getReportId() : null;
+        if (reportId) {
+          params.set('reportId', reportId);
+        }
+
+        var newQueryString = params.toString();
+        var newHref = href + (newQueryString ? '?' + newQueryString : '');
+
+        // Navigate to the new URL
+        e.preventDefault();
+        window.location.href = newHref;
+      });
+    });
   }
 
   // Initialize when DOM is ready

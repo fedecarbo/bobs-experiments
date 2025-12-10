@@ -2,7 +2,7 @@
 <html lang="en" class="govuk-template">
   <head>
     <meta charset="utf-8">
-    <title>Site constraints - Validation - BOPS Experiments</title>
+    <title>Review validation requests - Validation - BOPS Experiments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
 
@@ -67,46 +67,50 @@
         <div class="main-content-wrapper">
           <a href="index.html" class="govuk-back-link">Back to validation tasks</a>
 
-          <h1 class="govuk-heading-xl">Site constraints</h1>
+          <h1 class="govuk-heading-xl">Review validation requests</h1>
 
-          <p class="govuk-body page-description">Review the constraints that apply to this site. These are automatically detected based on the site location.</p>
+          <p class="govuk-body page-description">Review the validation requests that have been sent for this application.</p>
 
           <div class="page-status">
             <strong class="govuk-tag govuk-tag--grey">Not started</strong>
           </div>
 
-          <h2 class="govuk-heading-m">Detected constraints</h2>
+          <h2 class="govuk-heading-m">Validation requests</h2>
 
-          <table class="govuk-table constraint-table">
+          <table class="govuk-table">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Category</th>
-                <th scope="col" class="govuk-table__header">Constraint</th>
-                <th scope="col" class="govuk-table__header">Source</th>
+                <th scope="col" class="govuk-table__header">Request</th>
+                <th scope="col" class="govuk-table__header">Date sent</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+                <th scope="col" class="govuk-table__header">Action</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Heritage</td>
-                <td class="govuk-table__cell">Conservation area - Peckham Rye</td>
-                <td class="govuk-table__cell">Planning Data</td>
+                <td class="govuk-table__cell">
+                  <strong>Missing documents</strong><br>
+                  <span class="govuk-body-s">Heritage Statement required for conservation area</span>
+                </td>
+                <td class="govuk-table__cell">18 Nov 2024</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Awaiting response</strong></td>
+                <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
               </tr>
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Ecology</td>
-                <td class="govuk-table__cell">Site of Importance for Nature Conservation (SINC)</td>
-                <td class="govuk-table__cell">Planning Data</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Flooding</td>
-                <td class="govuk-table__cell">Flood Zone 2</td>
-                <td class="govuk-table__cell">Environment Agency</td>
+                <td class="govuk-table__cell">
+                  <strong>Additional information</strong><br>
+                  <span class="govuk-body-s">Clarification on materials for rear extension</span>
+                </td>
+                <td class="govuk-table__cell">16 Nov 2024</td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Received</strong></td>
+                <td class="govuk-table__cell"><a href="#" class="govuk-link">View response</a></td>
               </tr>
             </tbody>
           </table>
 
           <div class="govuk-inset-text">
             <p class="govuk-body govuk-!-margin-bottom-0">
-              <strong>Note:</strong> These constraints may require additional documents or consultation during assessment.
+              <strong>Note:</strong> All outstanding requests must be resolved before you can send the validation decision.
             </p>
           </div>
 
@@ -116,48 +120,20 @@
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                  <h2 class="govuk-fieldset__heading">Are there any other constraints you need to add?</h2>
+                  <h2 class="govuk-fieldset__heading">Have all validation requests been resolved?</h2>
                 </legend>
                 <div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="constraints-complete" name="constraints" type="radio" value="complete">
-                    <label class="govuk-label govuk-radios__label" for="constraints-complete">
-                      No, the constraints are complete
+                    <input class="govuk-radios__input" id="requests-resolved-yes" name="requests-resolved" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="requests-resolved-yes">
+                      Yes, all requests have been resolved
                     </label>
                   </div>
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="constraints-add" name="constraints" type="radio" value="add" data-aria-controls="conditional-constraints-add">
-                    <label class="govuk-label govuk-radios__label" for="constraints-add">
-                      Yes, I need to add more constraints
+                    <input class="govuk-radios__input" id="requests-resolved-no" name="requests-resolved" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="requests-resolved-no">
+                      No, there are still outstanding requests
                     </label>
-                  </div>
-                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-constraints-add">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="additional-constraint">
-                        Select constraint to add
-                      </label>
-                      <select class="govuk-select" id="additional-constraint" name="additional-constraint">
-                        <option value="">Select a constraint</option>
-                        <optgroup label="Heritage">
-                          <option value="listed-building">Listed building</option>
-                          <option value="scheduled-monument">Scheduled monument</option>
-                          <option value="world-heritage">World Heritage Site</option>
-                        </optgroup>
-                        <optgroup label="Trees">
-                          <option value="tpo">Tree Preservation Order (TPO)</option>
-                          <option value="ancient-woodland">Ancient woodland</option>
-                        </optgroup>
-                        <optgroup label="Ecology">
-                          <option value="sssi">Site of Special Scientific Interest (SSSI)</option>
-                          <option value="ramsar">Ramsar wetland site</option>
-                        </optgroup>
-                        <optgroup label="Other">
-                          <option value="article-4">Article 4 Direction</option>
-                          <option value="green-belt">Green Belt</option>
-                          <option value="aonb">Area of Outstanding Natural Beauty (AONB)</option>
-                        </optgroup>
-                      </select>
-                    </div>
                   </div>
                 </div>
               </fieldset>
@@ -184,6 +160,7 @@
 
     <!-- Component JS -->
     <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
     <script src="/components/js/sidebar.js"></script>
     <script src="validation-sidebar.js"></script>
     <script src="validation-controls.js"></script>

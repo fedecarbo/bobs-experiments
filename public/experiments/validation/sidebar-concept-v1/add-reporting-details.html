@@ -2,7 +2,7 @@
 <html lang="en" class="govuk-template">
   <head>
     <meta charset="utf-8">
-    <title>Check description - Validation - BOPS Experiments</title>
+    <title>Add reporting details - Validation - BOPS Experiments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
 
@@ -67,53 +67,97 @@
         <div class="main-content-wrapper">
           <a href="index.html" class="govuk-back-link">Back to validation tasks</a>
 
-          <h1 class="govuk-heading-xl">Check description</h1>
+          <h1 class="govuk-heading-xl">Add reporting details</h1>
 
-          <p class="govuk-body page-description">Check the description accurately describes the proposed development. You can edit it if needed.</p>
+          <p class="govuk-body page-description">Add the reporting details required for this application.</p>
 
           <div class="page-status">
             <strong class="govuk-tag govuk-tag--grey">Not started</strong>
           </div>
 
-          <h2 class="govuk-heading-m">What the applicant submitted</h2>
-          <div class="govuk-inset-text">
-            Erection of a single storey rear extension and associated internal alterations.
-          </div>
-
-          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
           <form>
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                  <h2 class="govuk-fieldset__heading">Is the description acceptable?</h2>
+                  <h2 class="govuk-fieldset__heading">Select development type</h2>
                 </legend>
-                <div class="govuk-hint">
-                  The description should be clear, concise and accurately describe all elements of the proposed development.
-                </div>
                 <div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="description-ok" name="description" type="radio" value="ok">
-                    <label class="govuk-label govuk-radios__label" for="description-ok">
-                      Yes, use this description
+                    <input class="govuk-radios__input" id="dev-type-q99" name="development-type" type="radio" value="q99">
+                    <label class="govuk-label govuk-radios__label" for="dev-type-q99">
+                      Q99 – Not Required
                     </label>
                   </div>
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="description-edit" name="description" type="radio" value="edit" data-aria-controls="conditional-description-edit">
-                    <label class="govuk-label govuk-radios__label" for="description-edit">
-                      No, I need to edit it
+                    <input class="govuk-radios__input" id="dev-type-q01" name="development-type" type="radio" value="q01">
+                    <label class="govuk-label govuk-radios__label" for="dev-type-q01">
+                      Q01 – Dwellings
                     </label>
                   </div>
-                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-description-edit">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="dev-type-q02" name="development-type" type="radio" value="q02">
+                    <label class="govuk-label govuk-radios__label" for="dev-type-q02">
+                      Q02 – Offices, R&D, light industry
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="dev-type-q03" name="development-type" type="radio" value="q03">
+                    <label class="govuk-label govuk-radios__label" for="dev-type-q03">
+                      Q03 – General industry, storage, waste
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="dev-type-q04" name="development-type" type="radio" value="q04">
+                    <label class="govuk-label govuk-radios__label" for="dev-type-q04">
+                      Q04 – Retail
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">Is the local planning authority the owner of this land?</h2>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="lpa-owner-yes" name="lpa-owner" type="radio" value="yes" data-aria-controls="conditional-lpa-owner-yes">
+                    <label class="govuk-label govuk-radios__label" for="lpa-owner-yes">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-lpa-owner-yes">
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="new-description">
-                        Updated description
-                      </label>
-                      <div class="govuk-hint">
-                        Write a clear description of the development. Include all elements such as extensions, alterations, and any changes of use.
-                      </div>
-                      <textarea class="govuk-textarea" id="new-description" name="new-description" rows="5">Erection of a single storey rear extension and associated internal alterations.</textarea>
+                      <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend">
+                          Is the local planning authority carrying out the works proposed?
+                        </legend>
+                        <div class="govuk-radios govuk-radios--small">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="lpa-works-yes" name="lpa-works" type="radio" value="yes">
+                            <label class="govuk-label govuk-radios__label" for="lpa-works-yes">
+                              Yes
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="lpa-works-no" name="lpa-works" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="lpa-works-no">
+                              No
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
                     </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="lpa-owner-no" name="lpa-owner" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="lpa-owner-no">
+                      No
+                    </label>
                   </div>
                 </div>
               </fieldset>
