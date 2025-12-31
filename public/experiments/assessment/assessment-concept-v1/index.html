@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Assessment Sidebar Concept v1 - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <!-- GOV.UK Frontend -->
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+
+    <!-- Assessment-specific styles -->
+    <link rel="stylesheet" href="assessment.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Alex Morgan</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Case Summary -->
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">24-00142-HAPP</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">45 Elmwood Avenue, Southwark, SE15 4RT</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Erection of a single storey rear extension and associated internal alterations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Layout -->
+    <div class="page-layout">
+      <!-- Sidebar - rendered by assessment-sidebar.js -->
+      <aside class="sidebar"></aside>
+
+      <!-- Main Content -->
+      <main class="main-content" id="main-content" role="main" tabindex="-1">
+        <div class="main-content-wrapper">
+          <a href="/experiments/" class="govuk-back-link">Back to experiments</a>
+          <h1 class="govuk-heading-xl">Assess application</h1>
+
+          <p class="govuk-body-l">
+            Assess this planning application against policy and material considerations.
+          </p>
+
+          <div class="app-details-list govuk-!-margin-bottom-6">
+            <p class="govuk-body-s"><strong>45 Elmwood Avenue, Southwark, SE15 4RT</strong></p>
+            <p class="govuk-body-s">Application reference: <strong>24-00142-HAPP</strong></p>
+            <p class="govuk-body-s">Application type: <strong>Householder</strong></p>
+            <p class="govuk-body-s">Date received: <strong>2 December 2024</strong></p>
+          </div>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <h2 class="govuk-heading-m">Assessment tasks</h2>
+          <p class="govuk-body">Complete each task to assess this application. You can complete them in any order.</p>
+
+          <!-- Check application -->
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Check application</h3>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Check application details</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="check-application-details.html">Start<span class="govuk-visually-hidden"> check application details task</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Check consultees consulted</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="check-consultees-consulted.html">Start<span class="govuk-visually-hidden"> check consultees consulted task</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Check site history</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="check-site-history.html">Start<span class="govuk-visually-hidden"> check site history task</span></a>
+              </dd>
+            </div>
+          </dl>
+
+          <!-- Additional services -->
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Additional services</h3>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Site visit</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="site-visit.html">Start<span class="govuk-visually-hidden"> site visit task</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Meeting</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="meeting.html">Start<span class="govuk-visually-hidden"> meeting task</span></a>
+              </dd>
+            </div>
+          </dl>
+
+          <!-- Assessment summaries -->
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Assessment summaries</h3>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Site description</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="site-description.html">Start<span class="govuk-visually-hidden"> site description task</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Planning considerations and advice</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="planning-considerations-and-advice.html">Start<span class="govuk-visually-hidden"> planning considerations and advice task</span></a>
+              </dd>
+            </div>
+          </dl>
+
+          <div class="govuk-inset-text">
+            <p class="govuk-body-s"><strong>Experimental alternatives for Planning Advice:</strong></p>
+            <ul class="govuk-list govuk-list--bullet govuk-body-s">
+              <li><a href="../planning-advice-v2/index.html" class="govuk-link">Grouped Checkboxes</a> - Select policies by category with expandable summaries</li>
+              <li><a href="../planning-advice-v1/index.html" class="govuk-link">Command Palette</a> - Keyboard-first rapid policy selection (press Cmd+K)</li>
+            </ul>
+          </div>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Suggest heads of terms</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="suggest-heads-of-terms.html">Start<span class="govuk-visually-hidden"> suggest heads of terms task</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Summary of advice</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="summary-of-advice.html">Start<span class="govuk-visually-hidden"> summary of advice task</span></a>
+              </dd>
+            </div>
+          </dl>
+
+          <!-- Complete assessment -->
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Complete assessment</h3>
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Choose application type</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="choose-application-type.html">Start<span class="govuk-visually-hidden"> choose application type task</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Check and add requirements</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="check-and-add-requirements.html">Start<span class="govuk-visually-hidden"> check and add requirements task</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Review and submit pre-application</dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="review-and-submit-pre-application.html">Start<span class="govuk-visually-hidden"> review and submit pre-application task</span></a>
+              </dd>
+            </div>
+          </dl>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- GOV.UK Frontend JS -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <!-- Component JS -->
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="assessment-sidebar.js"></script>
+    <script src="assessment-controls.js"></script>
+    <script src="content-loader.js"></script>
+  </body>
+</html>

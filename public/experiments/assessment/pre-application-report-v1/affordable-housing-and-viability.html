@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Affordable housing and viability - Pre-application Report v1 - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <!-- GOV.UK Frontend -->
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+
+    <!-- Experiment styles -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Alex Morgan</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Case Summary -->
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">24-00142-HAPP</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">45 Elmwood Avenue, Southwark, SE15 4RT</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Erection of a single storey rear extension and associated internal alterations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Layout -->
+    <div class="page-layout">
+      <!-- Sidebar - rendered by sidebar.js -->
+      <aside class="sidebar"></aside>
+
+      <!-- Main Content -->
+      <main class="main-content" id="main-content" role="main" tabindex="-1">
+        <div class="main-content-wrapper">
+          <a href="index.html" class="govuk-back-link">Back</a>
+          <h1 class="govuk-heading-xl">Affordable housing and viability</h1>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <!-- Advice 1 -->
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">Affordable housing provision</h2>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--green">Complies</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body">
+                <strong>Policy references:</strong> London Plan H4, Southwark Plan P1
+              </p>
+              <p class="govuk-body">
+                The proposed development meets the minimum affordable housing requirement of 35%, which is the threshold for the Fast Track Route. The tenure mix of 70% social rent and 30% intermediate is acceptable and aligns with identified local housing need as set out in the Strategic Housing Market Assessment.
+              </p>
+              <p class="govuk-body">
+                The unit sizes and wheelchair accessible provision also meet policy requirements. The affordable housing would be secured through a Section 106 agreement with appropriate nomination rights for the Council.
+              </p>
+            </div>
+          </div>
+
+          <!-- Advice 2 -->
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">Viability assessment</h2>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--yellow">Needs changes</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body">
+                <strong>Policy references:</strong> London Plan H5, Southwark Plan IP3
+              </p>
+              <p class="govuk-body">
+                The viability assessment submitted requires further review. The following issues need to be addressed:
+              </p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Build cost assumptions appear low compared to BCIS benchmarks</li>
+                <li>Sales values need to be evidenced with comparable transactions</li>
+                <li>Professional fees should be itemised</li>
+                <li>Benchmark land value methodology needs clarification</li>
+              </ul>
+              <p class="govuk-body">
+                We recommend the applicant engages with the Council's viability consultant to agree inputs before submission of the full application.
+              </p>
+            </div>
+          </div>
+
+          <!-- Advice 3 -->
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">Review mechanism</h2>
+              <div class="govuk-summary-card__actions">
+                <strong class="govuk-tag govuk-tag--green">Complies</strong>
+              </div>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body">
+                <strong>Policy references:</strong> London Plan H5
+              </p>
+              <p class="govuk-body">
+                An early and late stage review mechanism will be secured through the S106 agreement.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- GOV.UK Frontend JS -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <!-- Component JS -->
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="sidebar.js"></script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+/**
+ * Pre-application Report styles
+ */
+
+/* Task list header */
+.task-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 20px;
+}
+
+.task-list__header .task-list__heading {
+  padding: 0;
+}
+
+/* Task group headings */
+.task-list__group-heading {
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #505a5f;
+  margin: 0;
+  padding: 8px 20px 5px 20px;
+}
+
+.task-list__group-heading:first-of-type {
+  padding-top: 0;
+}
+
+/* Task items list */
+.task-list__items {
+  padding-bottom: 0;
+}
+
+/* Current page styling */
+.task-list__item--current {
+  background-color: transparent;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.task-list__item--current .task-list__name {
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+}
+
+.task-list__item--current .task-list__link {
+  text-decoration: none;
+}
+
+/* Advice card titles - larger for hierarchy */
+.govuk-summary-card__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Status tags - consistent spacing */
+.govuk-summary-card__actions .govuk-tag {
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+/* Consideration images (thumbnails) */
+.app-consideration-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.app-consideration-image {
+  display: block;
+  border: 1px solid #b1b4b6;
+  width: 120px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.app-consideration-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-consideration-image:hover {
+  border-color: #1d70b8;
+}
+
+.app-consideration-image:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}

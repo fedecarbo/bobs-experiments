@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Planning considerations and advice - Assessment - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+    <link rel="stylesheet" href="/components/css/drawer.css">
+    <link rel="stylesheet" href="policy-chips.css">
+    <link rel="stylesheet" href="rich-text-editor.css">
+    <link rel="stylesheet" href="assessment.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Alex Morgan</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">24-00142-HAPP</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">45 Elmwood Avenue, Southwark, SE15 4RT</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Erection of a single storey rear extension and associated internal alterations.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-layout">
+      <aside class="sidebar"></aside>
+      <main class="main-content" id="main-content" role="main" tabindex="-1">
+        <div class="main-content-wrapper">
+          <a href="index.html" class="govuk-back-link">Back to assessment tasks</a>
+          <h1 class="govuk-heading-xl">Planning considerations and advice</h1>
+          <p class="govuk-body page-description">
+            Assess the proposal against relevant planning policies and guidance. Group your advice by planning consideration (e.g., Design, Amenity, Privacy) and provide your assessment for each element of the proposal.
+          </p>
+          <div class="page-status">
+            <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+          </div>
+
+          <!-- Add Consideration Component -->
+          <details class="govuk-details govuk-!-margin-top-4" data-module="govuk-details" id="add-consideration-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">Add a new consideration</span>
+            </summary>
+            <div class="govuk-details__text">
+              <h2 class="govuk-heading-m">Add a new consideration</h2>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="policy-area-input">
+                  Enter policy area
+                </label>
+                <div class="autocomplete-wrapper">
+                  <input class="govuk-input" id="policy-area-input" name="policyArea" type="text" autocomplete="off" aria-autocomplete="list" aria-controls="policy-area-dropdown" aria-expanded="false">
+                  <div id="policy-area-dropdown" class="autocomplete-dropdown" role="listbox"></div>
+                </div>
+              </div>
+              <!-- Snippet preview appears here when policy area is selected -->
+              <div id="add-consideration-snippets"></div>
+              <button type="button" class="govuk-button" data-module="govuk-button" id="add-consideration-submit">
+                Add consideration
+              </button>
+            </div>
+          </details>
+
+          <!-- Considerations Container -->
+          <div id="considerations-container" class="govuk-!-margin-top-6">
+            <!-- Consideration containers will be added here dynamically -->
+          </div>
+
+          <!-- Task Completion Actions -->
+          <form class="govuk-!-margin-top-8">
+            <div class="validation-actions">
+              <button type="submit" class="govuk-button" data-action="complete" data-module="govuk-button">
+                Save and mark as complete
+              </button>
+              <a href="index.html" class="govuk-link">Save and come back later</a>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <!-- Drawer Backdrop -->
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+
+    <!-- Policy Drawer -->
+    <aside id="policy-drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true">
+      <div class="drawer__header">
+        <div class="drawer__header-top">
+          <h2 id="drawer-title" class="drawer__title">Planning policies</h2>
+          <button type="button" id="drawer-close-button" class="drawer__close-button" aria-label="Close drawer">
+            <svg class="drawer__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span class="drawer__sr-only">Close</span>
+          </button>
+        </div>
+        <p class="drawer__description">Planning policies relevant to this pre-application assessment.</p>
+        <div class="drawer__search">
+          <label class="govuk-label govuk-visually-hidden" for="drawer-search-input">Search policies</label>
+          <input class="govuk-input drawer__search-input" id="drawer-search-input" type="text" placeholder="Search policies...">
+        </div>
+      </div>
+      <div class="drawer__tabs-container">
+        <nav class="drawer__tabs" aria-label="Policy filter tabs">
+          <button type="button" class="drawer__tab drawer__tab--active" data-tab="relevant" aria-selected="true">
+            Relevant
+          </button>
+          <button type="button" class="drawer__tab" data-tab="all" aria-selected="false">
+            All
+          </button>
+        </nav>
+      </div>
+      <div id="drawer-content" class="drawer__content">
+        <!-- Policy content will be rendered here by JavaScript -->
+      </div>
+    </aside>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/components/js/supabase-client.js"></script>
+    <!-- GOV.UK Frontend -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+    <!-- Assessment components -->
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="/components/js/drawer.js"></script>
+    <script src="assessment-sidebar.js"></script>
+    <script src="assessment-controls.js"></script>
+    <script src="content-loader.js"></script>
+    <!-- Planning considerations logic -->
+    <script src="planning-considerations.js"></script>
+
+    <!-- Initialize drawer with sample data -->
+    <script>
+      // Sample policy data for testing
+      var samplePolicies = [
+        {
+          reference: 'P5',
+          name: 'Residential Design Standards',
+          summary: 'All new residential development should provide a high quality living environment for future residents and contribute positively to the character of the area.',
+          category: 'Design and Heritage'
+        },
+        {
+          reference: 'P14',
+          name: 'Extensions and Alterations to Existing Buildings',
+          summary: 'Extensions and alterations to existing buildings should be of high quality design, respect the character of the existing building and surrounding area, and not adversely affect the amenity of neighbouring properties.',
+          category: 'Design and Heritage'
+        },
+        {
+          reference: 'P56',
+          name: 'Protection of Amenity',
+          summary: 'Development should not result in unacceptable material impacts on the amenity of neighbouring properties or the surrounding area, by reason of noise, vibration, fumes, dust, water or soil pollution, or other disturbance.',
+          category: 'Environmental Quality'
+        },
+        {
+          reference: 'P12',
+          name: 'Design Quality',
+          summary: 'Development should be of the highest quality design, be contextual and locally distinctive, and contribute positively to the character of the area.',
+          category: 'Design and Heritage'
+        }
+      ];
+
+      // Store sample policies globally for use by planning considerations
+      document.addEventListener('DOMContentLoaded', function() {
+        window.samplePolicies = samplePolicies;
+      });
+    </script>
+  </body>
+</html>

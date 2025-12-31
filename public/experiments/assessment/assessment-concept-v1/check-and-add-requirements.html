@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Check and add requirements - Assessment - BOPS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <link rel="stylesheet" href="/components/css/layout.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="/components/css/case-summary.css">
+    <link rel="stylesheet" href="/components/css/sidebar.css">
+    <link rel="stylesheet" href="/components/css/main-content.css">
+    <link rel="stylesheet" href="assessment.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Alex Morgan</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+      <div class="case-summary">
+        <span class="govuk-body govuk-!-font-weight-bold case-summary__reference">24-00142-HAPP</span>
+        <div class="case-summary__divider"></div>
+        <span class="govuk-body case-summary__address">45 Elmwood Avenue, Southwark, SE15 4RT</span>
+        <a href="#" class="govuk-link case-summary__toggle" aria-expanded="false" aria-controls="proposal-description">Show proposal description</a>
+        <div class="case-summary__description" id="proposal-description">
+          <p class="govuk-body">Erection of a single storey rear extension and associated internal alterations.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-layout">
+      <aside class="sidebar"></aside>
+      <main class="main-content" id="main-content" role="main" tabindex="-1">
+        <div class="main-content-wrapper">
+          <a href="index.html" class="govuk-back-link">Back to assessment tasks</a>
+          <h1 class="govuk-heading-xl">Check and add requirements</h1>
+          <p class="govuk-body page-description">Task content to be defined.</p>
+          <div class="page-status">
+            <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+          </div>
+          <form>
+            <div class="validation-actions">
+              <button type="submit" class="govuk-button" data-action="complete" data-module="govuk-button">
+                Save and mark as complete
+              </button>
+              <a href="index.html" class="govuk-link">Save and come back later</a>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+    <script src="/components/js/case-summary.js"></script>
+    <script src="/components/js/status-icons.js"></script>
+    <script src="/components/js/sidebar.js"></script>
+    <script src="assessment-sidebar.js"></script>
+    <script src="assessment-controls.js"></script>
+    <script src="content-loader.js"></script>
+  </body>
+</html>
