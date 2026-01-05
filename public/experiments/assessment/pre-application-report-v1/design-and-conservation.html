@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="/components/css/sidebar.css">
     <link rel="stylesheet" href="/components/css/main-content.css">
 
+    <!-- Drawer CSS -->
+    <link rel="stylesheet" href="/components/css/drawer.css">
+    <link rel="stylesheet" href="/components/css/snippet-drawer.css">
+    <link rel="stylesheet" href="/components/css/advice-composer.css">
+
     <!-- Experiment styles -->
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -151,6 +156,92 @@
             </div>
           </div>
 
+          <!-- Add advice form -->
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <h2 class="govuk-heading-m">Add advice</h2>
+
+          <form class="add-advice-form">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="advice-title">Title</label>
+              <input class="govuk-input" id="advice-title" name="advice-title" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="advice-status">Status</label>
+              <select class="govuk-select" id="advice-status" name="status">
+                <option value="">Select status</option>
+                <option value="complies">Complies</option>
+                <option value="needs-changes">Needs changes</option>
+                <option value="does-not-comply">Does not comply</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="policy-references">Policy references</label>
+              <div class="govuk-hint">For example, London Plan H1, Southwark Plan P30</div>
+              <input class="govuk-input" id="policy-references" name="policy-references" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="advice-content">Advice</label>
+              <div class="advice-composer">
+                <!-- Header: Rich text buttons -->
+                <div class="advice-composer__header">
+                  <button type="button" class="advice-composer__format-btn" data-format="bold" aria-label="Bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 12h8a4 4 0 0 0 0-8H6v8Zm0 0h9a4 4 0 0 1 0 8H6v-8Z" />
+                    </svg>
+                  </button>
+                  <button type="button" class="advice-composer__format-btn" data-format="italic" aria-label="Italic">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4m-2 0v16m-4 0h8" transform="skewX(-10)" />
+                    </svg>
+                  </button>
+                  <button type="button" class="advice-composer__format-btn" data-format="list" aria-label="Bullet list">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>
+                  </button>
+                  <button type="button" class="advice-composer__format-btn" data-format="numbered-list" aria-label="Numbered list">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12" />
+                      <text x="3" y="8" font-size="6" font-weight="bold" fill="currentColor">1</text>
+                      <text x="3" y="13.5" font-size="6" font-weight="bold" fill="currentColor">2</text>
+                      <text x="3" y="19" font-size="6" font-weight="bold" fill="currentColor">3</text>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Attachments (inserted snippets) -->
+                <div class="advice-composer__attachments" id="composer-attachments">
+                  <!-- Attachments will be added here dynamically -->
+                </div>
+
+                <!-- Textarea -->
+                <textarea class="govuk-textarea advice-composer__textarea" id="advice-content" name="advice-content" rows="6"></textarea>
+
+                <!-- Footer: Actions -->
+                <div class="advice-composer__footer">
+                  <button type="button" class="advice-composer__action-btn" data-open-snippet-drawer data-textarea-id="advice-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                    </svg>
+                    Insert
+                  </button>
+                  <button type="button" class="advice-composer__action-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                    </svg>
+                    Upload
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">Add advice</button>
+          </form>
+
         </div>
       </main>
     </div>
@@ -167,5 +258,59 @@
     <script src="/components/js/status-icons.js"></script>
     <script src="/components/js/sidebar.js"></script>
     <script src="sidebar.js"></script>
+
+    <!-- Snippet Drawer -->
+    <script src="snippet-data.js"></script>
+    <script src="/components/js/snippet-drawer.js"></script>
+
+    <!-- Snippet Drawer HTML -->
+    <div class="drawer-backdrop" id="snippet-drawer-backdrop" aria-hidden="true"></div>
+    <aside class="drawer" id="snippet-drawer" role="dialog" aria-labelledby="snippet-drawer-title" aria-hidden="true">
+      <div class="drawer__header">
+        <div class="drawer__header-top">
+          <h2 class="drawer__title" id="snippet-drawer-title">Insert from similar applications</h2>
+          <button type="button" class="drawer__close-button" id="snippet-drawer-close" aria-label="Close drawer">
+            <svg class="drawer__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <p class="drawer__description">Find relevant text from nearby and similar applications</p>
+        <div class="drawer__search">
+          <input type="search" class="govuk-input drawer__search-input" id="snippet-search-input" placeholder="Search snippets...">
+        </div>
+        <div class="snippet-drawer__filters">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-visually-hidden" for="filter-consideration">Consideration type</label>
+            <select class="govuk-select" id="filter-consideration">
+              <option value="">All consideration types</option>
+              <option value="affordable-housing-and-viability">Affordable housing and viability</option>
+              <option value="design-and-conservation">Design and conservation</option>
+              <option value="land-use">Land use</option>
+            </select>
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-visually-hidden" for="filter-distance">Distance</label>
+            <select class="govuk-select" id="filter-distance">
+              <option value="">Any distance</option>
+              <option value="250">Within 250m</option>
+              <option value="500">Within 500m</option>
+              <option value="1000">Within 1km</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="drawer__tabs-container">
+        <div class="drawer__tabs" role="tablist">
+          <button type="button" class="drawer__tab drawer__tab--active" data-tab="nearby" role="tab" aria-selected="true">Nearby</button>
+          <button type="button" class="drawer__tab" data-tab="similar" role="tab" aria-selected="false">Similar</button>
+          <button type="button" class="drawer__tab" data-tab="all" role="tab" aria-selected="false">All</button>
+        </div>
+      </div>
+      <div class="snippet-drawer__results-count" id="snippet-results-count" aria-live="polite">0 results</div>
+      <div class="drawer__content" id="snippet-drawer-content" role="tabpanel">
+        <!-- Snippets rendered here by JavaScript -->
+      </div>
+    </aside>
   </body>
 </html>

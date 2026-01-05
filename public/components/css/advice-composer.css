@@ -1,0 +1,230 @@
+/**
+ * Advice Composer Component CSS
+ * Enhanced textarea with header (rich text) and footer (actions)
+ */
+
+/* ============================================
+ * COMPOSER CONTAINER
+ * ============================================ */
+
+.advice-composer {
+  border: 2px solid #0b0c0c;
+  background-color: #ffffff;
+}
+
+/* ============================================
+ * HEADER: Rich text formatting buttons
+ * ============================================ */
+
+.advice-composer__header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background-color: #f3f2f1;
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.advice-composer__format-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #0b0c0c;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.advice-composer__format-btn:hover {
+  background-color: #ffffff;
+  border-color: #b1b4b6;
+}
+
+.advice-composer__format-btn:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}
+
+.advice-composer__format-btn--active {
+  background-color: #ffffff;
+  border-color: #0b0c0c;
+}
+
+.advice-composer__format-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+ * ATTACHMENTS AREA (inserted snippets)
+ * ============================================ */
+
+.advice-composer__attachments {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.advice-composer__attachments.has-items {
+  display: flex;
+}
+
+.advice-composer__attachment {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  border: 1px solid #b1b4b6;
+  border-left: 3px solid #1d70b8;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  color: #0b0c0c;
+}
+
+.advice-composer__attachment-icon {
+  width: 16px;
+  height: 16px;
+  color: #505a5f;
+}
+
+.advice-composer__attachment-text {
+  font-weight: 400;
+}
+
+.advice-composer__attachment-ref {
+  font-weight: 700;
+  color: #1d70b8;
+}
+
+.advice-composer__attachment-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin-left: 4px;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  color: #505a5f;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.advice-composer__attachment-remove:hover {
+  background-color: #f3f2f1;
+  color: #0b0c0c;
+}
+
+.advice-composer__attachment-remove:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}
+
+.advice-composer__attachment-remove-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================================
+ * TEXTAREA
+ * ============================================ */
+
+.advice-composer__textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 12px;
+  border: none;
+  margin: 0;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  color: #0b0c0c;
+  resize: vertical;
+}
+
+.advice-composer__textarea:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}
+
+.advice-composer__textarea::placeholder {
+  color: #505a5f;
+}
+
+/* ============================================
+ * FOOTER: Action buttons
+ * ============================================ */
+
+.advice-composer__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #f3f2f1;
+  border-top: 1px solid #b1b4b6;
+}
+
+.advice-composer__action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  border: 1px solid #b1b4b6;
+  border-radius: 4px;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0b0c0c;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.advice-composer__action-btn:hover {
+  background-color: #f3f2f1;
+  border-color: #0b0c0c;
+}
+
+.advice-composer__action-btn:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}
+
+.advice-composer__action-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+ * RESPONSIVE
+ * ============================================ */
+
+@media (max-width: 640px) {
+  .advice-composer__header {
+    flex-wrap: wrap;
+  }
+
+  .advice-composer__footer {
+    flex-wrap: wrap;
+  }
+
+  .advice-composer__attachments {
+    gap: 6px;
+  }
+
+  .advice-composer__attachment {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+}

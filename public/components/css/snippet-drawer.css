@@ -1,0 +1,268 @@
+/**
+ * Snippet Drawer Component CSS
+ * Extends base drawer patterns for displaying application snippets
+ */
+
+/* ============================================
+ * SNIPPET DRAWER FILTERS
+ * ============================================ */
+
+.snippet-drawer__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.snippet-drawer__filters .govuk-form-group {
+  margin-bottom: 0;
+}
+
+.snippet-drawer__filters .govuk-select {
+  width: 100%;
+}
+
+/* ============================================
+ * SNIPPET LIST
+ * ============================================ */
+
+.snippet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ============================================
+ * SNIPPET ITEM CARD
+ * ============================================ */
+
+.snippet-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #b1b4b6;
+  transition: background-color 150ms ease;
+}
+
+.snippet-item:first-child {
+  padding-top: 0;
+}
+
+.snippet-item:last-child {
+  border-bottom: none;
+}
+
+.snippet-item:hover {
+  background-color: #f8f8f8;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Header row: reference, distance, date */
+.snippet-item__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.snippet-item__reference {
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0b0c0c;
+}
+
+.snippet-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.snippet-item__distance {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background-color: #f3f2f1;
+  border-radius: 4px;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  color: #505a5f;
+}
+
+.snippet-item__distance-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.snippet-item__date {
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  color: #505a5f;
+}
+
+/* Address */
+.snippet-item__address {
+  margin: 0 0 12px 0;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #505a5f;
+}
+
+/* Consideration type */
+.snippet-item__consideration {
+  margin: 0 0 12px 0;
+}
+
+.snippet-item__consideration-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #f3f2f1;
+  border-left: 4px solid #1d70b8;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0b0c0c;
+}
+
+/* Preview text */
+.snippet-item__preview {
+  margin: 0 0 16px 0;
+  padding: 12px;
+  background-color: #f8f8f8;
+  border-left: 3px solid #b1b4b6;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0c0c;
+}
+
+.snippet-item__preview-text {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Actions */
+.snippet-item__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.snippet-item__insert-button {
+  font-size: 16px;
+}
+
+/* ============================================
+ * STATUS INDICATORS
+ * ============================================ */
+
+.snippet-item__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.snippet-item__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.snippet-item__status-dot--complies {
+  background-color: #00703c;
+}
+
+.snippet-item__status-dot--needs-changes {
+  background-color: #ffdd00;
+}
+
+.snippet-item__status-dot--does-not-comply {
+  background-color: #d4351c;
+}
+
+/* ============================================
+ * EMPTY AND NO RESULTS STATES
+ * ============================================ */
+
+.snippet-drawer__empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #505a5f;
+}
+
+.snippet-drawer__empty-state-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  color: #b1b4b6;
+}
+
+.snippet-drawer__empty-state p {
+  margin: 0;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ============================================
+ * RESULTS COUNT
+ * ============================================ */
+
+.snippet-drawer__results-count {
+  padding: 12px 24px;
+  background-color: #f3f2f1;
+  border-bottom: 1px solid #b1b4b6;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  color: #505a5f;
+}
+
+/* ============================================
+ * ADVICE TOOLBAR (button placement)
+ * ============================================ */
+
+.advice-toolbar {
+  margin-bottom: 10px;
+}
+
+.advice-toolbar .govuk-button {
+  margin-bottom: 0;
+}
+
+/* ============================================
+ * RESPONSIVE
+ * ============================================ */
+
+@media (max-width: 768px) {
+  .snippet-drawer__filters {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .snippet-item {
+    padding: 15px 0;
+  }
+
+  .snippet-item:hover {
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .snippet-item__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .snippet-item__meta {
+    margin-left: 0;
+  }
+}
