@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Planning applications - Southwark BOPS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="case-list.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container" style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+          <div class="govuk-header__logo" style="white-space: nowrap;">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Fede Carbo, Case Officer</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="govuk-width-container" style="max-width: 1100px;">
+      <main class="govuk-main-wrapper" id="main-content" role="main">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-header__title">
+            <h1 class="govuk-heading-xl">Planning applications</h1>
+            <a href="#" class="govuk-link">Add new application</a>
+          </div>
+        </div>
+
+        <!-- Status dashboard -->
+        <div class="status-dashboard govuk-!-margin-bottom-6">
+          <a href="#" class="status-card">
+            <span class="status-card__count">2</span>
+            <span class="status-card__label">Overdue</span>
+          </a>
+          <a href="#" class="status-card">
+            <span class="status-card__count">3</span>
+            <span class="status-card__label">Returned for changes</span>
+          </a>
+          <a href="#" class="status-card">
+            <span class="status-card__count">8</span>
+            <span class="status-card__label">Due this week</span>
+          </a>
+        </div>
+
+        <!-- Applications section -->
+        <h2 class="govuk-heading-l">Applications</h2>
+
+        <!-- Search section -->
+        <div class="search-section">
+          <div class="search-section__labels">
+            <label class="govuk-label" for="search">Find an application</label>
+            <div id="search-hint" class="govuk-hint">You can search by application number, description or address</div>
+          </div>
+          <div class="search-section__controls">
+            <input class="govuk-input search-group__input" id="search" name="search" type="search" aria-describedby="search-hint">
+            <button type="submit" class="govuk-button search-group__button" data-module="govuk-button">Search</button>
+            <a href="#" class="govuk-link">Clear search</a>
+          </div>
+        </div>
+
+        <!-- Filters (desktop) -->
+        <div class="filters-section filters-section--desktop">
+          <div class="filters-section__item">
+            <label class="govuk-label" for="filter-assigned">Assigned to</label>
+            <select class="govuk-select" id="filter-assigned" name="filter-assigned">
+              <option value="me" selected>Assigned to me</option>
+              <option value="all">All applications</option>
+            </select>
+          </div>
+          <div class="filters-section__item">
+            <label class="govuk-label" for="filter-type">Application type</label>
+            <select class="govuk-select" id="filter-type" name="filter-type">
+              <option value="all" selected>All types</option>
+              <option value="full">Full planning</option>
+              <option value="lbc">Listed building consent</option>
+              <option value="prior">Prior approval</option>
+              <option value="householder">Householder</option>
+            </select>
+          </div>
+          <div class="filters-section__item">
+            <label class="govuk-label" for="filter-status">Status</label>
+            <select class="govuk-select" id="filter-status" name="filter-status">
+              <option value="all" selected>All statuses</option>
+              <option value="validation">Validation</option>
+              <option value="consultation">Consultation</option>
+              <option value="assessment">Assessment</option>
+              <option value="committee">Committee</option>
+              <option value="determined">Determined</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filters (mobile accordion) -->
+        <details class="govuk-details filters-section--mobile" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">Filter applications</span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="filters-section__item">
+              <label class="govuk-label" for="filter-assigned-mobile">Assigned to</label>
+              <select class="govuk-select" id="filter-assigned-mobile" name="filter-assigned-mobile">
+                <option value="me" selected>Assigned to me</option>
+                <option value="all">All applications</option>
+              </select>
+            </div>
+            <div class="filters-section__item">
+              <label class="govuk-label" for="filter-type-mobile">Application type</label>
+              <select class="govuk-select" id="filter-type-mobile" name="filter-type-mobile">
+                <option value="all" selected>All types</option>
+                <option value="full">Full planning</option>
+                <option value="lbc">Listed building consent</option>
+                <option value="prior">Prior approval</option>
+                <option value="householder">Householder</option>
+              </select>
+            </div>
+            <div class="filters-section__item">
+              <label class="govuk-label" for="filter-status-mobile">Status</label>
+              <select class="govuk-select" id="filter-status-mobile" name="filter-status-mobile">
+                <option value="all" selected>All statuses</option>
+                <option value="validation">Validation</option>
+                <option value="consultation">Consultation</option>
+                <option value="assessment">Assessment</option>
+                <option value="committee">Committee</option>
+                <option value="determined">Determined</option>
+              </select>
+            </div>
+          </div>
+        </details>
+
+        <!-- Applications table -->
+        <table class="govuk-table app-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Application</th>
+              <th scope="col" class="govuk-table__header">Status</th>
+              <th scope="col" class="govuk-table__header">Expiry date</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">24/00892/FULL</a>
+                <span class="app-table__address">45 Bermondsey Street, London, SE1 3XF</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--blue">Assessment</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">15 Feb 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">24/01023/FULL</a>
+                <span class="app-table__address">12 Tower Bridge Road, London, SE1 2UP</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--yellow">Consultation</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">22 Feb 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">24/00756/LBC</a>
+                <span class="app-table__address">The Old Fire Station, 84 Peckham Road</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--turquoise">Validation</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">28 Feb 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">24/00634/FULL</a>
+                <span class="app-table__address">Unit 4, Canada Water Retail Park</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--purple">Committee</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">5 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">24/00521/FULL</a>
+                <span class="app-table__address">23 Lordship Lane, East Dulwich, SE22 8EW</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--green">Determined</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">10 Mar 2026</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </main>
+    </div>
+
+    <footer class="govuk-footer">
+      <div class="govuk-width-container">
+        <div class="govuk-footer__meta">
+          <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+            <span class="govuk-footer__licence-description">
+              Built using the
+              <a class="govuk-footer__link" href="https://design-system.service.gov.uk/" rel="noopener noreferrer" target="_blank">
+                GOV.UK Design System
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+    <script src="case-list.js"></script>
+  </body>
+</html>
