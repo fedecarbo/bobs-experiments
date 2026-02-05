@@ -1,0 +1,62 @@
+/**
+ * Application Details Page
+ */
+
+/* Hero section - two columns 50/50 */
+.app-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.app-hero__content {
+  min-width: 0;
+}
+
+.app-hero__description {
+  color: #505a5f;
+  margin-bottom: 15px;
+}
+
+.app-hero__status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.app-hero__status .govuk-body {
+  color: #505a5f;
+}
+
+/* Map container - square, fills column */
+.app-hero__map {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.app-map {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #b1b4b6;
+  background-color: #f3f2f1;
+}
+
+/* Responsive - stack on mobile */
+@media (max-width: 900px) {
+  .app-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .app-hero__map {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Show more/less toggle for summary list */
+.app-summary-list__row--collapsed {
+  display: none;
+}
+

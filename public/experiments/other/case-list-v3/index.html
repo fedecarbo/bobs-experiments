@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>Planning applications - Southwark BOPS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="case-list.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container" style="max-width: 1100px; margin: 0 auto;">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Fede Carbo, Case Officer</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="govuk-width-container" style="max-width: 1100px;">
+      <main class="govuk-main-wrapper" id="main-content" role="main">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-header__title">
+            <h1 class="govuk-heading-xl">Planning applications</h1>
+            <a href="#" class="govuk-link">Add new application</a>
+          </div>
+        </div>
+
+        <!-- Status dashboard -->
+        <div class="status-dashboard govuk-!-margin-bottom-6">
+          <a href="#" class="status-card">
+            <span class="status-card__count">2</span>
+            <span class="status-card__label">Overdue</span>
+          </a>
+          <a href="#" class="status-card">
+            <span class="status-card__count">3</span>
+            <span class="status-card__label">Returned for changes</span>
+          </a>
+          <a href="#" class="status-card">
+            <span class="status-card__count">8</span>
+            <span class="status-card__label">Due this week</span>
+          </a>
+        </div>
+
+        <!-- Applications section -->
+        <h2 class="govuk-heading-l">Applications</h2>
+
+        <!-- Search section -->
+        <div class="search-section">
+          <div class="search-section__labels">
+            <label class="govuk-label" for="search">Find an application</label>
+            <div id="search-hint" class="govuk-hint">You can search by application number, description or address</div>
+          </div>
+          <div class="search-section__controls">
+            <input class="govuk-input search-group__input" id="search" name="search" type="search" aria-describedby="search-hint">
+            <button type="submit" class="govuk-button search-group__button" data-module="govuk-button">Search</button>
+            <a href="#" class="govuk-link">Clear search</a>
+          </div>
+        </div>
+
+        <!-- Filters (desktop) -->
+        <div class="filters-section filters-section--desktop">
+          <div class="filters-section__item">
+            <label class="govuk-label" for="filter-assigned">Assigned to</label>
+            <select class="govuk-select" id="filter-assigned" name="filter-assigned">
+              <option value="me" selected>Assigned to me</option>
+              <option value="all">All applications</option>
+            </select>
+          </div>
+          <div class="filters-section__item">
+            <label class="govuk-label" for="filter-type">Application type</label>
+            <select class="govuk-select" id="filter-type" name="filter-type">
+              <option value="all" selected>All types</option>
+              <option value="prior-approval">Prior approval</option>
+              <option value="planning-permission">Planning permission</option>
+              <option value="lawfulness-certificate">Lawfulness certificate</option>
+              <option value="pre-application">Pre application</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="filters-section__item">
+            <label class="govuk-label" for="filter-status">Status</label>
+            <select class="govuk-select" id="filter-status" name="filter-status">
+              <option value="all" selected>All statuses</option>
+              <option value="not-started">Not started</option>
+              <option value="invalidated">Invalidated</option>
+              <option value="in-assessment">In assessment</option>
+              <option value="awaiting-determination">Awaiting determination</option>
+              <option value="to-be-reviewed">To be reviewed</option>
+              <option value="closed">Closed</option>
+              <option value="withdrawn">Withdrawn</option>
+              <option value="determined">Determined</option>
+              <option value="returned">Returned</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filters (mobile accordion) -->
+        <details class="govuk-details filters-section--mobile" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">Filter applications</span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="filters-section__item">
+              <label class="govuk-label" for="filter-assigned-mobile">Assigned to</label>
+              <select class="govuk-select" id="filter-assigned-mobile" name="filter-assigned-mobile">
+                <option value="me" selected>Assigned to me</option>
+                <option value="all">All applications</option>
+              </select>
+            </div>
+            <div class="filters-section__item">
+              <label class="govuk-label" for="filter-type-mobile">Application type</label>
+              <select class="govuk-select" id="filter-type-mobile" name="filter-type-mobile">
+                <option value="all" selected>All types</option>
+                <option value="prior-approval">Prior approval</option>
+                <option value="planning-permission">Planning permission</option>
+                <option value="lawfulness-certificate">Lawfulness certificate</option>
+                <option value="pre-application">Pre application</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="filters-section__item">
+              <label class="govuk-label" for="filter-status-mobile">Status</label>
+              <select class="govuk-select" id="filter-status-mobile" name="filter-status-mobile">
+                <option value="all" selected>All statuses</option>
+                <option value="not-started">Not started</option>
+                <option value="invalidated">Invalidated</option>
+                <option value="in-assessment">In assessment</option>
+                <option value="awaiting-determination">Awaiting determination</option>
+                <option value="to-be-reviewed">To be reviewed</option>
+                <option value="closed">Closed</option>
+                <option value="withdrawn">Withdrawn</option>
+                <option value="determined">Determined</option>
+                <option value="returned">Returned</option>
+              </select>
+            </div>
+          </div>
+        </details>
+
+        <!-- Applications table -->
+        <table class="govuk-table app-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Application</th>
+              <th scope="col" class="govuk-table__header">Status</th>
+              <th scope="col" class="govuk-table__header">Expiry date</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="application.html" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00892-HAPP</a>
+                <span class="app-table__address">45 Bermondsey Street, London, SE1 3XF</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--blue">In assessment</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">15 Feb 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-01023-LDCP</a>
+                <span class="app-table__address">12 Tower Bridge Road, London, SE1 2UP</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--yellow">Awaiting determination</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">22 Feb 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00756-PA1A</a>
+                <span class="app-table__address">The Old Fire Station, 84 Peckham Road</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">28 Feb 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00634-HAPP</a>
+                <span class="app-table__address">Unit 4, Canada Water Retail Park</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--purple">To be reviewed</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">5 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00521-HAPP</a>
+                <span class="app-table__address">23 Lordship Lane, East Dulwich, SE22 8EW</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--green">Determined</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">10 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00498-PREAPP</a>
+                <span class="app-table__address">17 Camberwell Church Street, SE5 8TR</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--blue">In assessment</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">12 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00467-LDCP</a>
+                <span class="app-table__address">Dulwich Picture Gallery, Gallery Road, SE21 7AD</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--red">Invalidated</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">14 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00445-HAPP</a>
+                <span class="app-table__address">89 Rye Lane, Peckham, SE15 4ST</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">16 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00423-PA1A</a>
+                <span class="app-table__address">The Blue Anchor, 1 Southwark Street, SE1 1RQ</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--blue">In assessment</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">18 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00401-HAPP</a>
+                <span class="app-table__address">52 Borough High Street, SE1 1XN</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--orange">Returned</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">20 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00389-LDCP</a>
+                <span class="app-table__address">Southwark Cathedral, London Bridge, SE1 9DA</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--yellow">Awaiting determination</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">22 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00367-HAPP</a>
+                <span class="app-table__address">Unit 12, Elephant Park, SE17 1FL</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--green">Determined</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">24 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00345-PREAPP</a>
+                <span class="app-table__address">34 Nunhead Lane, SE15 3QG</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--blue">In assessment</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">26 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00323-PA1A</a>
+                <span class="app-table__address">The Horniman Museum, 100 London Road, SE23 3PQ</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--grey">Not started</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">28 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00301-HAPP</a>
+                <span class="app-table__address">67 Denmark Hill, SE5 8RS</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag">Closed</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">30 Mar 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00289-LDCP</a>
+                <span class="app-table__address">7 Trinity Street, SE1 1DB</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--blue">In assessment</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">1 Apr 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00267-HAPP</a>
+                <span class="app-table__address">Peckham Levels, 95A Rye Lane, SE15 4TG</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--green">Determined</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">3 Apr 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00245-PREAPP</a>
+                <span class="app-table__address">14 Blackfriars Road, SE1 8NY</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--light-blue">Withdrawn</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">5 Apr 2026</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" data-label="Application">
+                <a href="#" class="govuk-link govuk-link--no-visited-state app-table__reference">26-00223-HAPP</a>
+                <span class="app-table__address">The Shard, 32 London Bridge Street, SE1 9SG</span>
+              </td>
+              <td class="govuk-table__cell" data-label="Status">
+                <strong class="govuk-tag govuk-tag--purple">To be reviewed</strong>
+              </td>
+              <td class="govuk-table__cell" data-label="Expiry date">7 Apr 2026</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <nav class="govuk-pagination" aria-label="Pagination">
+          <div class="govuk-pagination__prev">
+            <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+              <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+              </svg>
+              <span class="govuk-pagination__link-title">
+                Previous<span class="govuk-visually-hidden"> page</span>
+              </span>
+            </a>
+          </div>
+          <ul class="govuk-pagination__list">
+            <li class="govuk-pagination__item">
+              <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1">
+                1
+              </a>
+            </li>
+            <li class="govuk-pagination__item govuk-pagination__item--current">
+              <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2" aria-current="page">
+                2
+              </a>
+            </li>
+            <li class="govuk-pagination__item">
+              <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+                3
+              </a>
+            </li>
+            <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+              &ctdot;
+            </li>
+            <li class="govuk-pagination__item">
+              <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 12">
+                12
+              </a>
+            </li>
+          </ul>
+          <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+              <span class="govuk-pagination__link-title">
+                Next<span class="govuk-visually-hidden"> page</span>
+              </span>
+              <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg>
+            </a>
+          </div>
+        </nav>
+
+      </main>
+    </div>
+
+    <footer class="govuk-footer">
+      <div class="govuk-width-container">
+        <div class="govuk-footer__meta">
+          <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+            <span class="govuk-footer__licence-description">
+              Built using the
+              <a class="govuk-footer__link" href="https://design-system.service.gov.uk/" rel="noopener noreferrer" target="_blank">
+                GOV.UK Design System
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+    <script src="case-list.js"></script>
+  </body>
+</html>
