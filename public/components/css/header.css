@@ -1,12 +1,12 @@
 /**
  * Header CSS
- * BOPS header styling and sticky positioning
+ * BOPS header styling and positioning
  */
 
 .sticky-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 100;
+  flex-shrink: 0;
 }
 
 .sticky-header .govuk-header {
@@ -25,6 +25,10 @@
   border-bottom: 0;
 }
 
+.sticky-header .govuk-header__logo {
+  white-space: nowrap;
+}
+
 .sticky-header .govuk-header__logo a {
   font-size: 24px;
 }
@@ -41,4 +45,23 @@
 
 .sticky-header .govuk-header__content .govuk-header__link:first-child {
   margin-right: 15px;
+}
+
+/* Responsive header for small screens */
+@media (max-width: 640px) {
+  .sticky-header .govuk-header__container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sticky-header .govuk-header__logo {
+    white-space: normal;
+  }
+
+  .sticky-header .govuk-header__content {
+    margin-left: 0;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }

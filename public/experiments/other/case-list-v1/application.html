@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>45 Bermondsey Street, London, SE1 3XF - Southwark BOPS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <link rel="stylesheet" href="/components/css/header.css">
+    <link rel="stylesheet" href="case-list.css">
+    <link rel="stylesheet" href="application.css">
+
+    <!-- OpenLayers for map -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <div class="sticky-header">
+      <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container" style="max-width: 1100px; margin: 0 auto;">
+          <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+              <strong>Southwark</strong> Back-office Planning System
+            </a>
+          </div>
+          <div class="govuk-header__content">
+            <span class="govuk-header__link">Fede Carbo, Case Officer</span>
+            <a href="#" class="govuk-header__link">Log out</a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="govuk-width-container" style="max-width: 1100px;">
+      <main class="govuk-main-wrapper" id="main-content" role="main">
+
+        <!-- Back link -->
+        <a href="index.html" class="govuk-back-link">Back to applications</a>
+
+        <!-- Hero section: two columns -->
+        <div class="app-hero">
+          <div class="app-hero__content">
+            <span class="govuk-caption-xl">26-00892-HAPP</span>
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">45 Bermondsey Street, London, SE1 3XF</h1>
+            <p class="govuk-body-l app-hero__description">Rear extension and loft conversion with dormer windows</p>
+
+            <div class="app-hero__status">
+              <strong class="govuk-tag govuk-tag--blue">In assessment</strong>
+              <span class="govuk-body govuk-!-margin-bottom-0">Received 23 days ago</span>
+            </div>
+          </div>
+
+          <div class="app-hero__map">
+            <div id="site-map" class="app-map"></div>
+          </div>
+        </div>
+
+        <!-- Section break -->
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <!-- About this application -->
+        <h2 class="govuk-heading-l">About this application</h2>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <dl class="govuk-summary-list" id="about-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Application type</dt>
+                <dd class="govuk-summary-list__value">Householder application</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Valid from</dt>
+                <dd class="govuk-summary-list__value">15 January 2026</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Consultation end</dt>
+                <dd class="govuk-summary-list__value">5 February 2026</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Expiry date</dt>
+                <dd class="govuk-summary-list__value">12 March 2026</dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Request extension</a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Case officer</dt>
+                <dd class="govuk-summary-list__value">Not assigned</dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Assign</a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">Parish</dt>
+                <dd class="govuk-summary-list__value">Beaconsfield</dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">Ward</dt>
+                <dd class="govuk-summary-list__value">Beaconsfield</dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">Ward type</dt>
+                <dd class="govuk-summary-list__value">Unitary Authority ward (UTW)</dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">Address source</dt>
+                <dd class="govuk-summary-list__value">Ordnance Survey</dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">UPRN</dt>
+                <dd class="govuk-summary-list__value">100080482163</dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">Work already started</dt>
+                <dd class="govuk-summary-list__value">No</dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">Payment reference</dt>
+                <dd class="govuk-summary-list__value">Exempt</dd>
+              </div>
+              <div class="govuk-summary-list__row app-summary-list__row--collapsed">
+                <dt class="govuk-summary-list__key">Payment amount</dt>
+                <dd class="govuk-summary-list__value">£0.00</dd>
+              </div>
+            </dl>
+
+            <p class="govuk-body govuk-!-margin-top-3">
+              <a href="#" class="govuk-link" id="toggle-more-details">Show more</a>
+            </p>
+          </div>
+
+          <div class="govuk-grid-column-one-quarter">
+            <h3 class="govuk-heading-s">Actions</h3>
+            <ul class="govuk-list">
+              <li>
+                <a href="#" class="govuk-link govuk-link--no-visited-state">View documents (8)</a>
+              </li>
+              <li>
+                <a href="#" class="govuk-link govuk-link--no-visited-state">Schedule site visit</a>
+              </li>
+              <li>
+                <a href="#" class="govuk-link govuk-link--no-visited-state">Add a note</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section break -->
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <!-- Tasks and workflow -->
+        <h2 class="govuk-heading-l">Tasks</h2>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Validation</h3>
+            <ul class="govuk-task-list govuk-!-margin-bottom-6">
+              <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                <div class="govuk-task-list__name-and-hint">
+                  <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="task-1-status">
+                    Check and validate
+                  </a>
+                </div>
+                <div class="govuk-task-list__status" id="task-1-status">
+                  Completed
+                </div>
+              </li>
+            </ul>
+
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Consultation</h3>
+            <ul class="govuk-task-list govuk-!-margin-bottom-6">
+              <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                <div class="govuk-task-list__name-and-hint">
+                  <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="task-2-status">
+                    Consultees, neighbours and publicity
+                  </a>
+                </div>
+                <div class="govuk-task-list__status" id="task-2-status">
+                  Completed
+                </div>
+              </li>
+            </ul>
+
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Assessment</h3>
+            <ul class="govuk-task-list govuk-!-margin-bottom-6">
+              <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                <div class="govuk-task-list__name-and-hint">
+                  <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="task-3-status">
+                    Check and assess
+                  </a>
+                </div>
+                <div class="govuk-task-list__status" id="task-3-status">
+                  Not started
+                </div>
+              </li>
+            </ul>
+
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Review</h3>
+            <ul class="govuk-task-list govuk-!-margin-bottom-6">
+              <li class="govuk-task-list__item">
+                <div class="govuk-task-list__name-and-hint">
+                  View recommendation
+                </div>
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="task-4-status">
+                  Cannot start yet
+                </div>
+              </li>
+            </ul>
+
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Decision</h3>
+            <ul class="govuk-task-list">
+              <li class="govuk-task-list__item">
+                <div class="govuk-task-list__name-and-hint">
+                  Publish determination
+                </div>
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="task-5-status">
+                  Cannot start yet
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <footer class="govuk-footer">
+      <div class="govuk-width-container">
+        <div class="govuk-footer__meta">
+          <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+            <span class="govuk-footer__licence-description">
+              Built using the
+              <a class="govuk-footer__link" href="https://design-system.service.gov.uk/" rel="noopener noreferrer" target="_blank">
+                GOV.UK Design System
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggleLink = document.getElementById('toggle-more-details');
+        var collapsedRows = document.querySelectorAll('.app-summary-list__row--collapsed');
+        var isExpanded = false;
+
+        if (toggleLink) {
+          toggleLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            isExpanded = !isExpanded;
+
+            collapsedRows.forEach(function(row) {
+              if (isExpanded) {
+                row.classList.remove('app-summary-list__row--collapsed');
+              } else {
+                row.classList.add('app-summary-list__row--collapsed');
+              }
+            });
+
+            toggleLink.textContent = isExpanded ? 'Show less' : 'Show more';
+          });
+        }
+      });
+    </script>
+
+    <!-- OpenLayers Map -->
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+    <script>
+      (function() {
+        // GeoJSON data for site boundary (Bermondsey Street area)
+        var geojsonData = {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "coordinates": [
+                  [
+                    [-0.08245, 51.50025],
+                    [-0.08225, 51.50025],
+                    [-0.08225, 51.50005],
+                    [-0.08245, 51.50005],
+                    [-0.08245, 51.50025]
+                  ]
+                ],
+                "type": "Polygon"
+              }
+            }
+          ]
+        };
+
+        // Style for the boundary (red outline)
+        var boundaryStyle = new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: '#d4351c',
+            width: 3
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(212, 53, 28, 0.15)'
+          })
+        });
+
+        // Create vector source from GeoJSON
+        var vectorSource = new ol.source.Vector({
+          features: new ol.format.GeoJSON().readFeatures(geojsonData, {
+            featureProjection: 'EPSG:3857'
+          })
+        });
+
+        // Apply style to all features
+        vectorSource.getFeatures().forEach(function(feature) {
+          feature.setStyle(boundaryStyle);
+        });
+
+        // Vector layer for the boundaries
+        var vectorLayer = new ol.layer.Vector({
+          source: vectorSource
+        });
+
+        // Create the map with OSM tiles
+        var map = new ol.Map({
+          target: 'site-map',
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            }),
+            vectorLayer
+          ],
+          view: new ol.View({
+            center: ol.proj.fromLonLat([-0.08235, 51.50015]),
+            zoom: 18
+          }),
+          controls: []
+        });
+
+        // Fit the map to show the boundary
+        map.getView().fit(vectorSource.getExtent(), {
+          padding: [40, 40, 40, 40],
+          maxZoom: 19
+        });
+      })();
+    </script>
+  </body>
+</html>
